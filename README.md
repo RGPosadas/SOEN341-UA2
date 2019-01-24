@@ -1,2 +1,5 @@
-# SOEN331-UA2
-Project for SOEN341, team UA2
+# SOEN341-UA2
+Group project for SOEN341-UA2.
+
+##Team Members
+
