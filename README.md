@@ -10,7 +10,7 @@ This project's goal is to create a web application similar to Twitter.
 * Umer Anwar, 40032710
 * Cindy Lo, 40065338 
 * Tung Leu,40025151
-*DIvesh Patel, 40027989
+* Divesh Patel, 40027989
 ***
 
 ## Git Rules
