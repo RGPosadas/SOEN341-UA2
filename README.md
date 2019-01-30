@@ -11,6 +11,8 @@ This project's goal is to create a web application similar to Twitter.
 * Cindy Lo, 40065338 
 * Tung Leu,40025151
 * Andres Vidoza, 40054362
+* Divesh Patel, 40027989
+* Muhammad Saad Mujtaba, 40043156
 
 ***
 
