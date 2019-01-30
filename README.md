@@ -8,6 +8,8 @@ This project's goal is to create a web application similar to Twitter.
 ## Team Members
 * Ritchelle Grace Posadas, 40057013
 * Umer Anwar, 40032710
+* Cindy Lo, 40065338 
+
 ***
 
 ## Git Rules
