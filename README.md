@@ -8,10 +8,11 @@ This project's goal is to create a web application similar to Twitter.
 ## Team Members
 * Ritchelle Grace Posadas, 40057013
 * Umer Anwar, 40032710
-* Cindy Lo, 40065338 
+* Cindy Lo, 40065338
 * Tung Leu,40025151
 * Divesh Patel, 40027989
 * Muhammad Saad Mujtaba, 40043156
+* Kajanthy Subramaniam, 40063712
 ***
 
 ## Git Rules
@@ -27,15 +28,15 @@ This project's goal is to create a web application similar to Twitter.
 
 ### Creating a New Branch
 We will be basing all our branches from the `develop` branch. Why not master? Because this way, you can pull all the other features that were not yet merged to `master`, but exist in `develop`.
-1. Go to your `develop` branch: 
+1. Go to your `develop` branch:
 ```
 git checkout develop
 ```
-2. Pull all changes that were made: 
+2. Pull all changes that were made:
 ```
 git pull
 ```
-3. Create a new branch based off of `develop`: 
+3. Create a new branch based off of `develop`:
 ```
 git branch BRANCH-TYPE-#/Name-of-Branch-Type
 Ex: TASK-1/Ritchelle-PR
