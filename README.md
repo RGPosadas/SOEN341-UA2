@@ -46,11 +46,12 @@ Ex: git checkout TASK-1/Ritchelle-PR
 <br/>
 
 ### Commit Messages
-It is important to note the branch type and number in the commit message (merged branches won't appear in `develop` and `master`'s commit history, so this will help us with our git history in the long run).
+* It is important to note the branch type and number in the commit message (merged branches won't appear in `develop` and `master`'s commit history, so this will help us with our git history in the long run).
 In today's standard, each commit message starts off with an action verb in present tense.
+* Also include the GitHub Issue number in your commit.
 ```
 Example commit message:
-TASK-1: Update README.md
+TASK-1: Update README.md, Issue #4
 ```
 
 <br/>
