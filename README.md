@@ -15,6 +15,7 @@ This project's goal is to create a web application similar to Twitter.
 * Muhammad Saad Mujtaba, 40043156
 * Kajanthy Subramaniam, 40063712
 * Nhut Vo, 40021967
+* Yun Shi Lin, 40055867
 
 ***
 
