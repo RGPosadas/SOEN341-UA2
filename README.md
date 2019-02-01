@@ -2,8 +2,13 @@
 This project's goal is to create a web application similar to Twitter.
 
 ## Technologies Used
-* Front-end: node.js
-* Back-end: undecided
+* Node.js
+* HTML
+* CSS
+* MySQL
+* TravisCI
+* AJAX
+* JavaScript
 
 ## Team Members
 * Ritchelle Grace Posadas, 40057013
