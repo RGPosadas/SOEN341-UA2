@@ -12,7 +12,7 @@ var server = http.createServer(function(req, res){
     //routing
     if(req.url === '/home' || req.url === '/'){
         res.writeHead(200, {'Content-Type': 'text/html'});
-        fs.createReadStream(__dirname + '/index.html', 'utf8').pipe(res);;
+        fs.createReadStream('../index.html', 'utf8').pipe(res);;
     }
 
     // Receiving POST from index.html form
