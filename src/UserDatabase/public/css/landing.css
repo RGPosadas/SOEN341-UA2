@@ -1,0 +1,65 @@
+.landing_body{
+	background-image: url("https://wallpapersdsc.net/wp-content/uploads/2016/09/Montreal-Wallpapers.jpg");
+	background-size: cover;
+}
+
+#landing_header{
+	font-size: 80px;
+	font-weight: 700;
+	font-family: Trebuchet MS, Helvetica, sans-serif;
+	text-align: center;
+	letter-spacing: 1px;
+}
+
+#sign_up_div,#sign_in_div{
+	width: 50%;
+	float: left;
+	padding-top: 15%;
+}
+#sign_up_form,#sign_in_form{
+	width: 50%;
+    height:200px;
+    margin: auto;
+}
+
+
+#sign_up_form input{
+	float: left;
+	margin-left: 35%;
+	clear:both;
+	margin-top: 20px;
+	height: 20px;
+}
+
+#sign_up_form input[type=button]{
+	float:left;
+	clear:both;
+	margin-top: 25px;
+	margin-left: 35%;
+	padding: 0px;
+	width: 100px;
+}
+
+#sign_up_form h2{
+	text-align: center;
+	font-family: Trebuchet MS, Helvetica, sans-serif;
+}
+
+#sign_in_form h2{
+	text-align: center;
+	font-family: Trebuchet MS, Helvetica, sans-serif;
+}
+
+
+#sign_in_form input{
+	float: left;
+	margin-top: 20px;
+	margin-left: 35%;
+	height: 20px;
+}
+
+#sign_in_form input[type=button]{
+	clear: left;
+	width: 100px;
+	margin-left: 35%;
+}
