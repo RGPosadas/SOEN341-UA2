@@ -1,0 +1,20 @@
+{
+  "name": "node_connect_app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "inert": "^5.1.2",
+    "mongoose": "^5.4.11",
+    "shortid": "^2.2.14",
+    "touch": "^3.1.0"
+  }
+}
