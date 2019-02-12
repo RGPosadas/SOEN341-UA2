@@ -16,7 +16,8 @@ var userProfileSchema = mongoose.Schema({
 
 // Creating a userSchema
 var userSchema = mongoose.Schema({
-  name: {type: String},
+  first_name: {type: String},
+  last_name: {type: String},
   email: {type: String},
   password: {type: String},
   member_id: {type: String, default: shortid.generate},
@@ -31,8 +32,8 @@ var userSchema = mongoose.Schema({
 const User = mongoose.model('User', userSchema);
 // Testing value to see if it appears on Collections of DB
 // User.create({
-//   name: "ti",
-// })
+//   name: "John",
+// });
 
 //to use this User model, using module.export
 module.exports = User;
