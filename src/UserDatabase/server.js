@@ -59,8 +59,6 @@ app.post("/post-signin", function (req, res) {
   var password = req.body.password;
   var user_profile;
 
-  console.log("Button Clicked: " + email);
-
   User.find({email: email}, function(err, data){
 
   if(err){
@@ -70,33 +68,24 @@ app.post("/post-signin", function (req, res) {
     
   if(data.length > 0){
     
-    if(data[0].password.toString() == password){
+    if(data[0].password.toString() == password) {
       console.log("Matched Password " + data[0].password);
       console.log(data[0].first_name);
       user_profile = data[0].first_name;
-
-      if(user_profile){
-        console.log("User profile exists");
-      }
     }
   }
-
-    else if(data.length == 0) {
-      console.log("No record found")
+    else {
+      console.log("No record found, user must register")
       return
     } 
 
-  console.log("Hello" + user_profile)
-
   if(user_profile){
-    console.log("user profile exists")
     res.render("profile.ejs");
   }
   else
     res.render("landing.ejs");
 })
-
-
+ 
 });
 
 
