@@ -51,21 +51,52 @@ app.post("/post-register", function (req, res) {
     password: req.body.password,
 
   });
-  res.render("landing.ejs");
+  res.render("register.ejs");
 });
 
 app.post("/post-signin", function (req, res) {
   var email = req.body.email;
-  var passwrd = req.body.password;
-  var user;
-  var err;
-  User.findOne({email:email},function(err,user){
-    if (err)
-      alert("Hi");
+  var password = req.body.password;
+  var user_profile;
+
+  console.log("Button Clicked: " + email);
+
+  User.find({email: email}, function(err, data){
+
+  if(err){
+    console.log("Error occured " + err);
+    return
+  }
+    
+  if(data.length > 0){
+    
+    if(data[0].password.toString() == password){
+      console.log("Matched Password " + data[0].password);
+      console.log(data[0].first_name);
+      user_profile = data[0].first_name;
+
+      if(user_profile){
+        console.log("User profile exists");
+      }
     }
-    callback(null, user)
-  })
-  res.render("profile.ejs");
+  }
+
+    else if(data.length == 0) {
+      console.log("No record found")
+      return
+    } 
+
+  console.log("Hello" + user_profile)
+
+  if(user_profile){
+    console.log("user profile exists")
+    res.render("profile.ejs");
+  }
+  else
+    res.render("landing.ejs");
+})
+
+
 });
 
 
