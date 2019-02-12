@@ -1,0 +1,19 @@
+<!--  include another view file (partial) inside a .ejs view file -->
+<%- include header.ejs %>
+
+<body class="landing_body">
+<h1 id="landing_header">RETTIWT</h1>
+<div id="sign_up_div">
+    <!-- Signup Form -->
+    <form id="sign_up_form" action="/post-register" method="post">
+        <h2>Sign Up</h2>
+        <input type="text" id="first_name" name="first_name" placeholder="First Name">
+        <input type="text" id="last_name" name="last_name" placeholder="Last Name">
+        <input type="text" id="email" name="email" placeholder="Email Address">
+        <input type="password" id="password" name="password" placeholder="password">
+        <input type="submit" value="Register">
+    </form>
+</div>
+
+</body>
+</html>
