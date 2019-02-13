@@ -37,55 +37,80 @@ app.get('/', function (req, res) {
   res.render("landing.ejs")
 });
 
-//render the register form
+//render the register form (when the User clicks register now, it will redirect to register.ejs)
 app.get('/register', (req, res) => {
   res.render('register.ejs');
 });
 
 //post method to process the register form
 app.post("/post-register", function (req, res) {
+
+  //Need to add check in database if email is already registered before creating the user
+
+
+  //Create user based on values in the form, and create a User profile and add it to the User
   User.create({
     first_name: req.body.first_name,
     last_name: req.body.last_name,
     email: req.body.email,
     password: req.body.password,
+    user_profile: User.create({
+      location: req.body.location,
+      description: req.body.description,
+      interests: req.body.interests,
+      profile_pic: req.body.profile_pic
+    })
 
   });
-  res.render("register.ejs");
+
+  //Need to add confirmation message that a User has been successfully created.
+  res.render("profile.ejs");
 });
 
+
+//post method to process the Sign in click
 app.post("/post-signin", function (req, res) {
+
+  //retrieve the email and password
   var email = req.body.email;
   var password = req.body.password;
   var user_profile;
 
+  //query the db to search for a matching document. There should be a unique document for an email.
   User.find({email: email}, function(err, data){
 
+
+    //Need to add error handling
   if(err){
     console.log("Error occured " + err);
-    return
   }
-    
+
+  //if there is a match
   if(data.length > 0){
-    
+
+    //check that the password of the user matches the password inputted
     if(data[0].password.toString() == password) {
-      console.log("Matched Password " + data[0].password);
-      console.log(data[0].first_name);
-      user_profile = data[0].first_name;
+      //retrieve the user's profile
+      user_profile = data[0].user_profile;
     }
   }
-    else {
-      console.log("No record found, user must register")
-      return
-    } 
 
+  //There wasn't a match (no user in db with email entered).
+  else {
+      console.log("No record found, user must register")
+  }
+
+  //If the profile exists, go to the profile page when logging in
   if(user_profile){
     res.render("profile.ejs");
   }
-  else
-    res.render("landing.ejs");
+
+  else{
+    res.render("landing.ejs")
+  }
+
 })
- 
+
 });
 
 
