@@ -22,3 +22,7 @@ This project's goal is to create a web application similar to Twitter.
 * Kajanthy Subramaniam, 40063712 @kajanthyS
 * Nhut Vo, 40021967 @jamesvo1038
 * Yun Shi Lin, 40055867 @dabris
+
+## Setting Up Your Environment
+* Head to /src/UserDatabase/
+* Run `npm install` 

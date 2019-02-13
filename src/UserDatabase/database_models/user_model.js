@@ -7,18 +7,17 @@ const shortid = require("shortid");
 
 // Creating a userSchema
 var userSchema = mongoose.Schema({
-  first_name: {type: String},
-  last_name: {type: String},
-  email: {type: String},
-  password: {type: String},
+  first_name: String,
+  last_name: String,
+  email: String,
+  password: String,
   member_id: {type: String, default: shortid.generate},
   // followers: [{"member_id": String, "friend_name": String, "profile_pic": String}],
   // following
-  location: {type: String, default: "None"},
-  description: {type: String, default: "None"},
-  interests: {type:String, default: "None"},
-  profile_pic: {type: String, default: "default_profile.png"}
-  //add post array
+  location: String,
+  description: String,
+  interests: String,
+  //profile_pic: {type: String, default: "default_profile.png"}
 });
 
 
@@ -27,9 +26,9 @@ var userSchema = mongoose.Schema({
 //create the user model
 const User = mongoose.model('User', userSchema);
 // Testing value to see if it appears on Collections of DB
-// User.create({
-//   name: "John",
-// });
+//   User.create({
+//     first_name: "John",
+//   });
 
 //to use this User model, using module.export
 module.exports = User;

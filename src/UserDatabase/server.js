@@ -1,5 +1,8 @@
 //The require() method is used to load and cache JavaScript modules.
 // So, if you want to load a local, relative JavaScript module into a Node.js application, you can simply use the require() method.
+var uri = 'mongodb+srv://admin:admin@tmcluster-1frve.mongodb.net/test?retryWrites=true';
+
+//all the modules
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
@@ -9,7 +12,8 @@ const flash = require('connect-flash');
 const session = require('express-session');
 
 // When you call mongoose.connect, it will set up a connection with the database.
-mongoose.connect('mongodb://localhost:27017/myapp');
+//Connect to the database
+mongoose.connect(uri, { useNewUrlParser: true });
 let db = mongoose.connection;
 
 //check connection

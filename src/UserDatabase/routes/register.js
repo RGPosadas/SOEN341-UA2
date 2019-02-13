@@ -28,7 +28,7 @@ router.post('/add', function (req, res) {
     //   });
     // }
 
-
+    console.log("creating user");
     //Create user based on values in the form, and create a User profile and add it to the User
     User.create({
         first_name: req.body.first_name,
@@ -42,6 +42,7 @@ router.post('/add', function (req, res) {
 
     });
 
+    console.log("user created");
     //Need to add confirmation message that a User has been successfully created.
     res.render("profile.ejs");
 });
