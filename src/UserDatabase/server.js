@@ -18,7 +18,7 @@ let db = mongoose.connection;
 
 //check connection
 db.once('open', function(){
-  console.log('Connected to MongoDB')
+  console.log('Connected to MongoDB');
 });
 
 //check for db errors
@@ -28,8 +28,10 @@ db.on('error', function(err){
 
 //Bring in models
 const User = require("./database_models/user_model");
+const Tweet = require("./database_models/tweet_model");
 
 const app = express();
+//static files
 app.use(express.static(path.join(__dirname, 'public')));
 // set the view engine to ejs
 app.set("view engine", "ejs");
@@ -88,6 +90,9 @@ app.use('/register', register);
 let signin = require('./routes/signin');
 app.use('/signin', signin);
 
+let tweet = require('./routes/tweet');
+tweet(app);
+
 
 //routing
 //A route method is derived from one of the HTTP methods, and is attached to an instance of the express class.
@@ -96,4 +101,3 @@ app.get('/', function (req, res) {
   //local variables for the view. It is like res.render(), except it cannot send the rendered view to the client on its own.
   res.render("landing.ejs")
 });
-

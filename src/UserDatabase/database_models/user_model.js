@@ -21,10 +21,9 @@ var userSchema = mongoose.Schema({
 });
 
 
-
-
 //create the user model
 const User = mongoose.model('User', userSchema);
+
 // Testing value to see if it appears on Collections of DB
 //   User.create({
 //     first_name: "John",
