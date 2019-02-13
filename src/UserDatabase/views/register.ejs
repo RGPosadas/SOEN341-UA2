@@ -1,0 +1,56 @@
+<!--  include another view file (partial) inside a .ejs view file -->
+<%- include header.ejs %>
+
+<style>
+    .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+            font-size: 3.5rem;
+        }
+    }
+</style>
+<!-- Custom styles for this template -->
+<link href="/css/signin.css" rel="stylesheet">
+</head>
+<body class="text-center">
+<form id="sign_up_form" action="register/add" method="post" class="form-signin">
+    <img class="mb-4" src="/docs/4.3/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+    <h1 class="h3 mb-3 font-weight-normal">Create an Account</h1>
+
+    <label for="inputFirstName" class="sr-only">First Name</label>
+    <input name = "first_name" type="text" id="inputFirstName" class="form-control" placeholder="First Name" required autofocus>
+
+    <label for="inputLastName" class="sr-only">Last Name</label>
+    <input name = "last_name" type="text" id="inputLastName" class="form-control" placeholder="Last Name" required autofocus>
+
+    <br />
+
+    <label for="inputEmail" class="sr-only">Email address</label>
+    <input name = "email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input name = "password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+
+    <label for="Location" class="sr-only"></label>
+    <input name = "location" type="text" id="inputLocation" class="form-control" placeholder="Enter Location" required>
+
+    <label for="Description" class="sr-only">Password</label>
+    <input name = "description" type="text" id="inputDescription" class="form-control" placeholder="About Yourself" required>
+
+    <label for="Interests" class="sr-only">Password</label>
+    <input name = "interests" type="text" id="inputInterests" class="form-control" placeholder="Interests" required>
+
+    <br />
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+    <p class="mt-5 mb-3 text-muted">&copy; 2017-2019</p>
+</form>
+</body>
+</html>

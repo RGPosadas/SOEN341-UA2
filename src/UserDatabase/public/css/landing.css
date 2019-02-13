@@ -3,10 +3,15 @@
 	background-size: cover;
 }
 
+h2{
+	color: white;
+}
+
 #landing_header{
 	font-size: 80px;
 	font-weight: 700;
 	font-family: Trebuchet MS, Helvetica, sans-serif;
+	color: white;
 	text-align: center;
 	letter-spacing: 1px;
 }
@@ -14,7 +19,6 @@
 #sign_up_div,#sign_in_div{
 	width: 50%;
 	float: left;
-	padding-top: 15%;
 }
 #sign_up_form,#sign_in_form{
 	width: 50%;
@@ -63,3 +67,13 @@
 	width: 100px;
 	margin-left: 35%;
 }
+
+#register_link:link, #register_link:visited{
+	color:white;
+	text-align: center;
+	float: left;
+	width: 100px;
+	margin-left: 42%;
+}
+
+
