@@ -3,6 +3,7 @@ const router = express.Router();
 
 //Bring in models
 const User = require("../database_models/user_model");
+const Tweet = require("../database_models/tweet_model");
 
 //post method to process the Sign in click
 // "/signin"
@@ -44,11 +45,16 @@ router.post("/", function (req, res) {
         //If the profile exists, go to the profile page when logging in
         if(user_profile){
             console.log("profile is renderring");
-            res.render("profile.ejs");
+
+            //Once we link tweets with profiles, we need to query the tweets that belong to the profile logged in.
+            Tweet.find({}, function(err, data){
+                if(err) throw err;
+                res.render('profile', {tweets: data});
+            });
         }
 
         else{
-            res.render("landing.ejs")
+            res.render("landing.ejs");
         }
 
     })
