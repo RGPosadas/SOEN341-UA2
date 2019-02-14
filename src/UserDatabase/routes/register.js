@@ -3,6 +3,7 @@ const router = express.Router();
 
 //Bring in models
 const User = require("../database_models/user_model");
+const Tweet = require("../database_models/tweet_model");
 
 //render the register form (when the User clicks register now, it will redirect to register.ejs)
 // "/register"
@@ -44,7 +45,11 @@ router.post('/add', function (req, res) {
 
     console.log("user created");
     //Need to add confirmation message that a User has been successfully created.
-    res.render("profile.ejs");
+    // res.render("profile.ejs");
+    Tweet.find({}, function(err, data){
+        if(err) throw err;
+        res.render('profile', {tweets: data});
+    });
 });
 
 module.exports = router;

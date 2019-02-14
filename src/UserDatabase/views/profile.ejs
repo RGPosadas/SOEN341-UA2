@@ -1,18 +1,18 @@
 <!--  include another view file (partial) inside a .ejs view file -->
 <%- include header.ejs %>
 <head>
-    <script src="../public/js/tweet_ajax.js"></script> 
+    <script src="/js/tweet_ajax.js"></script> 
 </head>
 <body>
         <h1>TWEETS</h1>
         <div id="tweet-table-1">
             <form>
                 <input type="text" name="item" placeholder="Write comment" required />
-                <button type="submit" action="/tweet/add">Tweet</button>
+                <button type="submit">Tweet</button>
             </form>
             <ul>
                 <% for(var i = 0; i < tweets.length; i++){ %>
-                <li><%= tweets[i].item %></li>
+                <li><%= tweets[i].tweet %></li>
                 <% } %>
             </ul>
         </div>

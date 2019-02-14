@@ -23,7 +23,7 @@ db.once('open', function(){
 
 //check for db errors
 db.on('error', function(err){
-  console.log(err)
+  console.log(err);
 });
 
 //Bring in models
@@ -91,7 +91,7 @@ let signin = require('./routes/signin');
 app.use('/signin', signin);
 
 let tweet = require('./routes/tweet');
-tweet(app);
+app.use('/tweet', tweet);
 
 
 //routing
