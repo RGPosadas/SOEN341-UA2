@@ -25,5 +25,6 @@ This project's goal is to create a web application similar to Twitter.
 
 ## Setting Up Your Environment
 * Head to /src/UserDatabase/
+* Install your dependencies using `npm install`
 * You must have `nodemon` installed. If you don't, run `npm install -g nodemon` to download it
 * Run `nodemon server.js` 
