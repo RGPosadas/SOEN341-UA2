@@ -17,10 +17,21 @@ require('./config/passport')(passport);
 
 // When you call mongoose.connect, it will set up a connection with the database.
 
-//Connect to the database
-mongoose.connect(uri, { useNewUrlParser: true })
-    .then(() => console.log("MongoDB Connected"))
-    .catch(err => console.log(err));
+// //Connect to the database
+// mongoose.connect(uri, { useNewUrlParser: true })
+//     .then(() => console.log("MongoDB Connected"))
+//     .catch(err => console.log(err));
+
+let db;
+
+mongoose.connect(uri, (err, database) => {
+  if (err) {
+    return console.log(err);
+  }
+  db = database;
+  console.log("Connected to MongoDB");
+
+});
 
 const app = express();
 
@@ -105,3 +116,28 @@ app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
 
 
+//add a document to the DB collection recording the click event
+app.post('/clicked', (req, res) => {
+  const click = {
+    clickTime: new Date()
+  };
+  console.log(click);
+  console.log(db);
+
+  db.collection('clicks').save(click, (err, result) => {
+    if (err) {
+      return console.log(err);
+    }
+    console.log('click added to db');
+    res.sendStatus(201);
+  });
+});
+
+// get the click data from the database
+app.get('/clicks', (req, res) => {
+
+  db.collection('clicks').find().toArray((err, result) => {
+    if (err) return console.log(err);
+    res.send(result);
+  });
+});

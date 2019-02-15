@@ -16,11 +16,24 @@
             <input class = "form-group" type="text" name="item" placeholder="Write comment" required />
             <button type="submit" id="#test">Tweet</button>
         </form>
-        <ul class="list-group">
-            <% for(var i = tweets.length-1; i >= 0; i--) { %> 
-                <li class="list-group-item"><%= tweets[i].tweet %></li>
-            <% } %>
-        </ul>
+        <div>   
+             <ul class="list-group">
+                <% for(var i = tweets.length-1; i >= 0; i--) { %>
+                    <div>
+                     <!-- <%= tweetId= tweets[i]._id%> -->
+                        <li class="list-group-item">
+                        <%= tweets[i].tweet %>
+                        </li>
+                        <p id="counter"></p>
+                        <button id="myButton">Like</button>
+                    </div>
+                <br />
+                <% } %>
+                </ul>
+            </div>
+
+            <script src="/js/client.js"></script>
+        </div>  
     </div>
 
 </div>
