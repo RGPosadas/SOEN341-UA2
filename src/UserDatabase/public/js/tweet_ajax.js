@@ -9,7 +9,7 @@ $(document).ready(function(){
 
       $.ajax({
         type: 'POST',
-        url: '/tweet',
+        url: '/index',
         data: todo, // passing this data to app.post
         //manipulate it in the app.post body
         //send the updated data to the success: at the bottom
