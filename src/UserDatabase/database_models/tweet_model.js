@@ -6,15 +6,7 @@ var userSchema = require('mongoose').model('User').schema;
 // Creating a userSchema
 var tweetSchema = mongoose.Schema({
   tweet: String,
-  // tweet_id: {type: String, default: shortid.generate},
-  // tweet_by: [userSchema],
-  // // likes: Number,
-  // creator: [
-  //   _id: {
-  //     type: mongoose.Schema.Type.ObjectId,
-  //     ref: "user_model"
-  //   }
-  // ]
+  user_id: String
 });
 
 //create the user model

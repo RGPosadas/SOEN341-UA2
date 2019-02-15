@@ -19,7 +19,7 @@ router.get('/', function (req,res) {
 //Profile Page
 router.get('/profile',ensureAuthenticated, function (req,res) {
 
-    Tweet.find({}, function(err, data){
+    Tweet.find({user_id: req.user.id}, function(err, data){
         if(err) throw err;
         //console.log(req.user);
         res.render('profile', {
@@ -37,7 +37,7 @@ router.post('/profile',  urlencodedParser, function(req, res){
     //create it
     Tweet.create({
         tweet: req.body.item,
-
+        user_id: req.user.id
     });
     //sends it to the profile.ejs
     res.json(req.body.item);

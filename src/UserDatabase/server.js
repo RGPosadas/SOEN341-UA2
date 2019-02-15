@@ -11,6 +11,7 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const expressLayouts = require('express-ejs-layouts');
 const passport = require('passport');
+const bodyParser = require('body-parser');
 
 require('./config/passport')(passport);
 
@@ -32,7 +33,9 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, 'views'));
 
 //bodyParser used for req.body
-app.use(express.urlencoded({extended: false}));
+//app.use(express.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({extended: true}));  
+app.use(bodyParser.json());
 
 // server
 const server = require("http").Server(app);
