@@ -24,14 +24,24 @@
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
+        <% if(!user){ %>
         <a class="nav-link" href="/users/login">Log In<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/users/register">Register</a>
       </li>
+      <% } %>
+      <% if(user) { %>
       <li class="nav-item">
-        <a class="nav-link" href="">Posts</a>
+        <a class="nav-link" href="">My Feed</a>
       </li>
+        <li class="nav-item">
+          <a class="nav-link" href="">My Friends</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/users/logout">Logout</a>
+        </li>
+        <% } %>
     </ul>
   </div>
 </nav>

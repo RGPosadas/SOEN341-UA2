@@ -19,12 +19,16 @@ router.get('/', function (req,res) {
 //Profile Page
 router.get('/profile',ensureAuthenticated, function (req,res) {
 
+    var data;
     Tweet.find({user_id: req.user.id}, function(err, data){
         if(err) throw err;
         //console.log(req.user);
         res.render('profile', {
             first_name: req.user.first_name,
             last_name: req.user.last_name,
+            location: req.user.location,
+            description: req.user.description,
+            interests: req.user.interests,
             tweets: data
         });
     });

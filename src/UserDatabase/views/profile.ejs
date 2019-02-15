@@ -2,7 +2,12 @@
 <head>
      <script src="/js/tweet_ajax.js"></script>
 </head>
-<div><h1 class="mt-4"><%= first_name + " " + last_name %>'s Profile</h1>
+<div>
+    <h1 class="mt-4"><%= first_name + " " + last_name %>'s Profile</h1>
+    <h4 class="mt-2">Location: <%= location %></h4>
+    <h4 class="mt-2">Description: <%= description %></h4>
+    <h4 class="mt-2">Interests: <%= interests %></h4>
+
     <div class = "card-body" id="user-profile">
     </div>
     <div class = "card-body" id="tweet-table-1">
@@ -17,7 +22,5 @@
             <% } %>
         </ul>
     </div>
-
-    <a href="/users/logout" class="btn btn-secondary">Logout</a>
 
 </div>
