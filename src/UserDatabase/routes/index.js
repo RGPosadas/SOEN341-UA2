@@ -21,7 +21,7 @@ router.get('/profile',ensureAuthenticated, function (req,res) {
 
     Tweet.find({}, function(err, data){
         if(err) throw err;
-        console.log(req.user);
+        //console.log(req.user);
         res.render('profile', {
             first_name: req.user.first_name,
             last_name: req.user.last_name,
@@ -33,7 +33,7 @@ router.get('/profile',ensureAuthenticated, function (req,res) {
 
 //Tweet Button
 router.post('/profile',  urlencodedParser, function(req, res){
-
+    
     //create it
     Tweet.create({
         tweet: req.body.item,
