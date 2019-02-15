@@ -17,7 +17,7 @@
             <button type="submit" id="#test">Tweet</button>
         </form>
         <ul class="list-group">
-            <% for(var i = 0; i < tweets.length; i++){ %>
+            <% for(var i = tweets.length-1; i >= 0; i--) { %> 
                 <li class="list-group-item"><%= tweets[i].tweet %></li>
             <% } %>
         </ul>
