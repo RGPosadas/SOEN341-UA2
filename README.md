@@ -15,7 +15,7 @@ This project's goal is to create a web application similar to Twitter.
 * Ritchelle Grace Posadas, 40057013 @RGPosadas
 * Umer Anwar, 40032710 @ooms97
 * Cindy Lo, 40065338 @cindyslittleplanet
-* Tung Leu,40025151 @leuthotung
+* Tung Leu, 40025151 @leuthotung
 * Andres Vidoza, 40054362 @andresvidoza
 * Divesh Patel, 40027989 @diveshpatel
 * Muhammad Saad Mujtaba, 40043156 @muhanator
@@ -25,4 +25,5 @@ This project's goal is to create a web application similar to Twitter.
 
 ## Setting Up Your Environment
 * Head to /src/UserDatabase/
-* Run `npm install` 
+* You must have `nodemon` installed. If you don't, run `npm install -g nodemon` to download it
+* Run `nodemon server.js` 
