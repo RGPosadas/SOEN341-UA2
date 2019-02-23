@@ -20,10 +20,12 @@
              <ul class="list-group">
                 <% for(var i = tweets.length-1; i >= 0; i--) { %>
                     <div>
+                        <%= first_name + " " + last_name %>&nbsp;&nbsp;&nbsp;&nbsp;
                      <!-- <%= tweetId= tweets[i]._id%> -->
                         <li class="list-group-item">
                         <%= tweets[i].tweet %>
                         </li>
+                        <small style="color:darkblue"><%= tweets[i]._id.getTimestamp(); %></small>
                         <p id="counter"></p>
                         <button id="myButton">Like</button>
                     </div>
