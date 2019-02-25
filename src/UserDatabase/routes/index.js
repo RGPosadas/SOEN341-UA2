@@ -6,6 +6,7 @@ const {ensureAuthenticated} = require('../config/auth');
 
 
 const Tweet = require("../database_models/tweet_model");
+const User = require("../database_models/user_model");
 
 
 //Home page
@@ -47,6 +48,20 @@ router.post('/profile',  urlencodedParser, function(req, res){
     res.json(req.body.item);
 
     console.log("creating tweet");
+
+});
+
+router.get('/suggested', ensureAuthenticated, function (req,res) {
+
+    User.find({}, function(err, data){
+        if(err) {
+            console.log(err);
+        }
+        res.render('suggested', {
+            users: data
+        })
+    });
+
 
 });
 
