@@ -8,9 +8,15 @@
         <h1 class = "lead mb-3"> Users </h1>
         <ul class="list-group">
             <% for(var i = users.length-1; i >= 0; i--) { %>
-                <li class="list-group-item"><%= users[i].first_name %></li>
+                <div>
+                    <li class="list-group-item">
+                        <p><%= users[i].first_name + " " + users[i].last_name %></p>
+                        <button id=<%= users[i]._id %>>Follow</button>
+                    </li>
+                </div>
             <% } %>
         </ul>
     </div>
 
 </div>
+<script src="/js/follow.js"></script>

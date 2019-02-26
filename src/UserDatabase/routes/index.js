@@ -57,6 +57,7 @@ router.get('/suggested', ensureAuthenticated, function (req,res) {
         if(err) {
             console.log(err);
         }
+        console.log(data);
         res.render('suggested', {
             users: data
         })
