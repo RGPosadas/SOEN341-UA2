@@ -10,7 +10,7 @@ $('button').click(function(){
 $(document).ready(function(){
     console.log("document ready")
     $('form').on('submit', function(){
-        alert(id);
+        alert("You are now following!");
 
         $.ajax({
           type: 'POST',
