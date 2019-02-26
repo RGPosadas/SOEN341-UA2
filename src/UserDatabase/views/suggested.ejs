@@ -11,7 +11,9 @@
                 <div>
                     <li class="list-group-item">
                         <p><%= users[i].first_name + " " + users[i].last_name %></p>
-                        <button id=<%= users[i]._id %>>Follow</button>
+                        <form>
+                            <button type="submit" id=<%= users[i]._id %>>Follow</button>
+                        </form>
                     </li>
                 </div>
             <% } %>

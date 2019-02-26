@@ -1,4 +1,29 @@
+
+let id = 0;
+
+// Get the id from the follow button when its clicked
 $('button').click(function(){
-    var id = $(this).attr('id');
-        alert(id);
+    id = $(this).attr('id');
 });
+
+//Pass the id here to send to the database
+$(document).ready(function(){
+    console.log("document ready")
+    $('form').on('submit', function(){
+        alert(id);
+
+        $.ajax({
+          type: 'POST',
+          url: '/suggested',
+          data: id,
+          success: function(data){
+            location.reload();
+          }
+        });
+  
+        return false;
+  
+    });
+  
+  
+  });
