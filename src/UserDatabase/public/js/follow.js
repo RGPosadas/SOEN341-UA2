@@ -20,7 +20,6 @@ $(document).ready(function(){
               id: id
           },
           success: function(data){
-            console.log("ajax success");
             location.reload();
           }
         });

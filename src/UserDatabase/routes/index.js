@@ -23,7 +23,6 @@ router.get('/profile',ensureAuthenticated, function (req,res) {
     var data;
     Tweet.find({user_id: req.user.id}, function(err, data){
         if(err) throw err;
-        //console.log(req.user);
         res.render('profile', {
             first_name: req.user.first_name,
             last_name: req.user.last_name,
@@ -53,6 +52,7 @@ router.post('/profile',  urlencodedParser, function(req, res){
 
 });
 
+//Display all users currently using the app as suggested users to follow
 router.get('/suggested', ensureAuthenticated, function (req,res) {
 
     User.find({}, function(err, data){
@@ -65,38 +65,38 @@ router.get('/suggested', ensureAuthenticated, function (req,res) {
     });
 });
 
+//POST method for suggested to listen to form submit in Suggested Users page
 router.post('/suggested',  urlencodedParser, function(req, res){
 
+    //This will update current user's following array to add the user they clicked on
     User.updateOne({_id: req.user.id}, { $push: { "following": req.body.id } }, function (err, data) {
         if(err) {
             console.log(err);
         }
         else {
-            console.log(req.body.id + " Added followee to database"); 
+            //console.log(req.body.id + " Added follower to database"); 
         }
     })
 });
 
+//GET method to show list of friends
 router.get('/friends', ensureAuthenticated, function (req,res) {
 
     User.find({_id: req.user.following}, function(err, data){
         if(err) {
             console.log(err);
         }
-        console.log(data);
         res.render('friends', {
             users: data
         })
     });
 });
 
+//GET method to show feed only for users that are being followed
 router.get('/feed',ensureAuthenticated, function (req,res) {
 
-    var data;
     Tweet.find({user_id: req.user.following}, function(err, data){
         if(err) throw err;
-        //console.log(req.user);
-        console.log(data);
         res.render('feed', {
             tweets: data
         });
