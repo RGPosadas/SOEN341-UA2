@@ -1,0 +1,22 @@
+<!--  include another view file (partial) inside a .ejs view file -->
+<div>
+        <h1 class="mt-4">My Friends</h1>
+    
+        <div class = "card-body" id="user-profile">
+        </div>
+        <div class = "card-body" id="user-table-1">
+            <h1 class = "lead mb-3"> Friends </h1>
+            <ul class="list-group">
+                <% for(var i = users.length-1; i >= 0; i--) { %>
+                    <div>
+                        <li class="list-group-item">
+                            <p><%= users[i].first_name + " " + users[i].last_name %></p>
+                        </li>
+                    </div>
+                <% } %>
+            </ul>
+        </div>
+    
+    </div>
+    <script src="/js/follow.js"></script>
+    

@@ -75,4 +75,36 @@ router.post('/suggested',  urlencodedParser, function(req, res){
     })
 });
 
+router.get('/friends', ensureAuthenticated, function (req,res) {
+
+    User.find({_id: req.user.following}, function(err, data){
+        if(err) {
+            console.log(err);
+        }
+        console.log(data);
+        res.render('friends', {
+            users: data
+        })
+    });
+});
+
+router.get('/feed',ensureAuthenticated, function (req,res) {
+
+    var data;
+    Tweet.find({user_id: req.user.following}, function(err, data){
+        if(err) throw err;
+        //console.log(req.user);
+        console.log(data);
+        res.render('feed', {
+            first_name: req.user.first_name,
+            last_name: req.user.last_name,
+            location: req.user.location,
+            description: req.user.description,
+            interests: req.user.interests,
+            tweets: data
+        });
+    });
+
+});
+
 module.exports = router;
