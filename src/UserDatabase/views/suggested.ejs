@@ -9,7 +9,7 @@
         <ul class="list-group">
             <% for(var i = users.length-1; i >= 0; i--) { %>
                 <div>
-                    <li class="list-group-item">
+                    <li class="list-group-item" id=<%= "li-"+users[i]._id %>>
                         <p><%= users[i].first_name + " " + users[i].last_name %></p>
                         <form>
                             <button type="submit" id=<%= users[i]._id %>>Follow</button>

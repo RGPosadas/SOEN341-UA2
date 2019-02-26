@@ -10,7 +10,6 @@ $('button').click(function(){
 $(document).ready(function(){
     console.log("document ready")
     $('form').on('submit', function(){
-        alert("You are now following!");
 
         $.ajax({
           type: 'POST',
@@ -24,6 +23,8 @@ $(document).ready(function(){
           }
         });
   
+        $('#li-'+id).remove()
+
         return false;
   
     });

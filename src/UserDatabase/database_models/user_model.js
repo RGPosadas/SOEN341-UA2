@@ -12,7 +12,7 @@ var userSchema = mongoose.Schema({
   password: String,
   member_id: {type: String, default: shortid.generate},
   followers: [String],
-  following: [String],
+  following: [mongoose.Schema.Types.ObjectId],
   location: String,
   description: String,
   interests: String,
