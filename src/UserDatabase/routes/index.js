@@ -74,7 +74,17 @@ router.post('/suggested',  urlencodedParser, function(req, res){
             console.log(err);
         }
         else {
-            //console.log(req.body.id + " Added follower to database"); 
+            console.log(req.body.id + " Added to UserSchema following"); 
+        }
+    })
+    
+    //This will update the user that is followed and add the current user id to their database
+    User.updateOne({_id: req.body.id}, { $push: { "followers": req.user.id } }, function (err, data) {
+        if(err) {
+            console.log(err);
+        }
+        else {
+            console.log(req.user.id + " Added to userSchema followers"); 
         }
     })
 });
@@ -102,6 +112,19 @@ router.get('/feed',ensureAuthenticated, function (req,res) {
         });
     });
 
+});
+
+//GET method to show list of followers
+router.get('/followers', ensureAuthenticated, function (req,res) {
+
+    User.find({_id: req.user.followers}, function(err, data){
+        if(err) {
+            console.log(err);
+        }
+        res.render('followers', {
+            users: data
+        })
+    });
 });
 
 module.exports = router;

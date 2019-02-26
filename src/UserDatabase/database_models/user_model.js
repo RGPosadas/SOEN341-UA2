@@ -11,7 +11,7 @@ var userSchema = mongoose.Schema({
   email: String,
   password: String,
   member_id: {type: String, default: shortid.generate},
-  //followers: [{"member_id": String, "friend_name": String, "profile_pic": String}],
+  followers: [String],
   following: [String],
   location: String,
   description: String,
