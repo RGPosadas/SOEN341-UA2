@@ -42,7 +42,9 @@ router.post('/profile',  urlencodedParser, function(req, res){
     //create it
     Tweet.create({
         tweet: req.body.item,
-        user_id: req.user.id
+        user_id: req.user.id,
+        first_name: req.user.first_name,
+        last_name: req.user.last_name
     });
     //sends it to the profile.ejs
     res.json(req.body.item);
@@ -96,11 +98,6 @@ router.get('/feed',ensureAuthenticated, function (req,res) {
         //console.log(req.user);
         console.log(data);
         res.render('feed', {
-            first_name: req.user.first_name,
-            last_name: req.user.last_name,
-            location: req.user.location,
-            description: req.user.description,
-            interests: req.user.interests,
             tweets: data
         });
     });
