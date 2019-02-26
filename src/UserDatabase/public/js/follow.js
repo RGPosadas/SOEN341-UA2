@@ -15,8 +15,12 @@ $(document).ready(function(){
         $.ajax({
           type: 'POST',
           url: '/suggested',
-          data: id,
+          dataType: "json",
+          data: {
+              id: id
+          },
           success: function(data){
+            console.log("ajax success");
             location.reload();
           }
         });

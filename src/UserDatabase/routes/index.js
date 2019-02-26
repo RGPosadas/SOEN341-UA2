@@ -57,7 +57,6 @@ router.get('/suggested', ensureAuthenticated, function (req,res) {
         if(err) {
             console.log(err);
         }
-        console.log(data);
         res.render('suggested', {
             users: data
         })
@@ -66,12 +65,12 @@ router.get('/suggested', ensureAuthenticated, function (req,res) {
 
 router.post('/suggested',  urlencodedParser, function(req, res){
 
-    User.updateOne({_id: req.user.id}, { $push: { "following": req.body.item } }, function (err, data) {
+    User.updateOne({_id: req.user.id}, { $push: { "following": req.body.id } }, function (err, data) {
         if(err) {
             console.log(err);
         }
         else {
-            console.log(req.body.item + " Added followee to database"); 
+            console.log(req.body.id + " Added followee to database"); 
         }
     })
 });
