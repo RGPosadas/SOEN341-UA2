@@ -11,8 +11,8 @@ var userSchema = mongoose.Schema({
   email: String,
   password: String,
   member_id: {type: String, default: shortid.generate},
-  // followers: [{"member_id": String, "friend_name": String, "profile_pic": String}],
-  // following
+  followers: [String],
+  following: [mongoose.Schema.Types.ObjectId],
   location: String,
   description: String,
   interests: String,

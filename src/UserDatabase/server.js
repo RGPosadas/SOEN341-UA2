@@ -24,7 +24,7 @@ require('./config/passport')(passport);
 
 let db;
 
-mongoose.connect(uri, (err, database) => {
+mongoose.connect(uri, { useNewUrlParser: true }, (err, database) => {
   if (err) {
     return console.log(err);
   }
