@@ -45,7 +45,8 @@ router.post('/profile',  urlencodedParser, function(req, res){
         tweet: req.body.item,
         user_id: req.user.id,
         first_name: req.user.first_name,
-        last_name: req.user.last_name
+        last_name: req.user.last_name,
+        liked_by: []
     });
     //sends it to the profile.ejs
     res.json(req.body.item);
@@ -156,6 +157,7 @@ router.get('/feed',ensureAuthenticated, function (req,res) {
     Tweet.find({user_id: req.user.following}, function(err, data){
         if(err) throw err;
         res.render('feed', {
+            user: req.user.id,
             tweets: data
         });
     });
@@ -175,4 +177,33 @@ router.get('/followers', ensureAuthenticated, function (req,res) {
     });
 });
 
+router.post('/like',  urlencodedParser, function(req, res){
+    
+    //This will update current user's following array to remove the user they clicked on
+    Tweet.updateOne({_id: req.body.id}, { $push: { "liked_by": req.user.id} }, function (err, data) {
+        if(err) {
+            console.log(err);
+        }
+        else {
+            return data;
+            //console.log(req.body.id + " Added to UserSchema following"); 
+        }
+    })
+
+});
+
+router.post('/unlike',  urlencodedParser, function(req, res){
+    
+    //This will update current user's following array to remove the user they clicked on
+    Tweet.updateOne({_id: req.body.id}, { $pull: { "liked_by": req.user.id} }, function (err, data) {
+        if(err) {
+            console.log(err);
+        }
+        else {
+            return data;
+            //console.log(req.body.id + " Added to UserSchema following"); 
+        }
+    })
+
+});
 module.exports = router;

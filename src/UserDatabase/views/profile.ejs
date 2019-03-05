@@ -24,10 +24,9 @@
                         <li class="list-group-item">
                         <h5 style="color:darkblue"><p><%= first_name + " " + last_name %></h5>
                         <%= tweets[i].tweet %></p>
+                        <p>Like counter: <%= tweets[i].liked_by.length %> </p>
                         <p><small style="color:darkblue"><%= tweets[i]._id.getTimestamp(); %></small></p>
                         </li>
-                        <p id="counter"></p>
-                        <button id="myButton">Like</button>
                     </div>
                 <br />
                 <% } %>
