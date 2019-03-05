@@ -15,6 +15,7 @@
                            <li class="list-group-item">
                             <h5 style="color:darkblue"><%= tweets[i].first_name + " " + tweets[i].last_name %></h5>
                             <p><%= tweets[i].tweet %></p>
+							<p><small style="color:darkblue"><%= tweets[i]._id.getTimestamp(); %></small></p>
                             <p></p>
                            </li>
                        </div>

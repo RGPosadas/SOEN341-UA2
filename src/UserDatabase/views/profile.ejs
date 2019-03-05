@@ -22,7 +22,9 @@
                     <div>
                      <!-- <%= tweetId= tweets[i]._id%> -->
                         <li class="list-group-item">
-                        <%= tweets[i].tweet %>
+                        <h5 style="color:darkblue"><p><%= first_name + " " + last_name %></h5>
+                        <%= tweets[i].tweet %></p>
+                        <p><small style="color:darkblue"><%= tweets[i]._id.getTimestamp(); %></small></p>
                         </li>
                         <p id="counter"></p>
                         <button id="myButton">Like</button>
