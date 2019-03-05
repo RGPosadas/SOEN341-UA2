@@ -8,13 +8,13 @@ $('button').click(function(){
 
 //Pass the id here to send to the database
 $(document).ready(function(){
-    console.log("document ready")
+
     $('form').on('submit', function(){
 
-        alert("You are now following!");
+        alert("You are now unfollowing!");
         $.ajax({
           type: 'POST',
-          url: '/suggested',
+          url: '/unfollow',
           dataType: "json",
           data: {
               id: id

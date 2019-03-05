@@ -113,6 +113,30 @@ router.post('/suggested',  urlencodedParser, function(req, res){
     })
 });
 
+//POST method for unfollowing
+router.post('/unfollow',  urlencodedParser, function(req, res){
+
+    //This will update current user's following array to remove the user they clicked on
+    User.updateOne({_id: req.user.id}, { $pull: { "following": req.body.id } }, function (err, data) {
+        if(err) {
+            console.log(err);
+        }
+        else {
+            //console.log(req.body.id + " Added to UserSchema following"); 
+        }
+    })
+    
+    //This will update the user that is followed and remove the current user id from their followers list
+    User.updateOne({_id: req.body.id}, { $pull: { "followers": req.user.id } }, function (err, data) {
+        if(err) {
+            console.log(err);
+        }
+        else {
+            //console.log(req.user.id + " Added to userSchema followers"); 
+        }
+    })
+});
+
 //GET method to show list of friends
 router.get('/friends', ensureAuthenticated, function (req,res) {
 
