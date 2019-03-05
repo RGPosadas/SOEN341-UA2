@@ -9,10 +9,11 @@ var tweetSchema = mongoose.Schema({
   tweet: String,
   user_id: String,
   first_name: String,
-  last_name: String
-}); 
+  last_name: String,
+  liked_by: [String]
+  
+});
 
-// Creating timestamp for tweetSchema
 tweetSchema.plugin(timestamp);
 
 //create the user model
