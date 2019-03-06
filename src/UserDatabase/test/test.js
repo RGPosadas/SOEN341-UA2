@@ -107,12 +107,50 @@ describe('Tweet Test:sending a tweet...', function () {
           console.log("Query results: " + data);
             if(data.tweet == tweetToPost){
                 console.log("Tweet successfully found in database");
-                process.exit();
+               // process.exit();
             }
            
       });
    
       })
+
+})
+})
+describe('Tweet Test:liking a tweet...', function () {
+  var tweetToPost = "[Travis-CI Testing] Commit " + String(process.env.TRAVIS_COMMIT) + "/" + String(process.env.TRAVIS_COMMIT_MESSAGE);
+  
+  before(function (done) {
+     
+    tweet = new Tweet({
+        tweet:tweetToPost,
+    user_id: "travis",
+    first_name: "travis",
+    last_name: "travis",
+    liked_by: "travis"
+    });
+    tweet.save(done)});
+
+  
+describe('like sended to db:'+tweetToPost, function () {
+
+    it('The tweet has been posted and liked', function (done) {
+     done();
+    })
+
+    
+    after(function(){
+        var tweetToPost = "[Travis-CI Testing] Commit " + String(process.env.TRAVIS_COMMIT) + "/" + String(process.env.TRAVIS_COMMIT_MESSAGE);      
+        Tweet.findOne({ liked_by: "travis" }, function (err, data) {
+        if (err) throw err;
+        console.log("Query results: " + data);
+          if(data.liked_by.includes("travis")){
+              console.log("Liked successfully");
+              process.exit();
+          }
+         
+    });
+ 
+    })
 
 })
 })
