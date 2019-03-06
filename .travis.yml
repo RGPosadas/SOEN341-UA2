@@ -1,4 +1,9 @@
 language: node_js
 node_js:
   - "stable"
-script: "true"
+before_script:
+  - npm install 
+script:
+  - echo $TRAVIS_COMMIT
+  - cd src/UserDatabase
+  - npm start
