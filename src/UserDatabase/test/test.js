@@ -13,9 +13,13 @@ const userCredentials = {
     email: 'travis@travis.com',
     password: 'travis'
 }
+const userCredentials2 ={
+  email:'travis@travis.com',
+  password: 'wrongpassword'
+}
 describe('User', function () {
   describe('Login test', function () {
-      it('should redirect to /profile', function (done) {
+      it('The app should redirect to /profile when log in successful', function (done) {
         agent
         .post('/users/login')
          .send(userCredentials)
@@ -25,6 +29,15 @@ describe('User', function () {
 //                console.log('***************************Authenticated*********************************************');
 //                done();
 //            });
+      }
+      )
+      it('The app should redirect to /login when log in failed', function (done) {
+        agent
+        .post('/users/login')
+         .send(userCredentials2)
+        .expect('Location','/users/login')
+        .end(done)
+//         
       }
       )
 
