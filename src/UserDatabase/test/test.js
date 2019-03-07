@@ -10,8 +10,8 @@ request  = require("supertest");
 agent = request.agent(app);
 
 const userCredentials = {
-    email: 'trash@trash',
-    password: 'trash'
+    email: 'travis@travis.com',
+    password: 'travis'
 }
 describe('User', function () {
   describe('Login test', function () {
@@ -20,10 +20,11 @@ describe('User', function () {
         .post('/users/login')
          .send(userCredentials)
         .expect('Location','/profile')
-         .end(function (err, res) {
-                console.log('***************************Authenticated*********************************************');
-                done();
-            });
+        .end(done)
+//         .end(function (err, res) {
+//                console.log('***************************Authenticated*********************************************');
+//                done();
+//            });
       }
       )
 
