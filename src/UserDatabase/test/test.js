@@ -14,9 +14,14 @@ const userCredentials = {
     password: 'travis'
 }
 
-const wrongCredentials ={
+const wrongPassword ={
   email:'travis@travis.com',
   password: 'wrongpassword'
+}
+
+const wrongEmail ={
+    email:'travis@travis.com',
+    password: 'wrongpassword'
 }
 
 
@@ -32,17 +37,33 @@ describe('Login Test', function () {
 
       }
       )
-      it('The app should redirect to /login when login failed', function (done) {
+      it('Wrong password: the app should redirect to /login when login failed', function (done) {
       {
         agent
         .post('/users/login')
-         .send(wrongCredentials)
+         .send(wrongPassword)
         .expect('Location','/users/login')
         .end(done)
       } 
         
       }
+
       )
+
+      it('Wrong email: the app should redirect to /login when login failed', function (done) {
+          {
+              agent
+              .post('/users/login')
+               .send(wrongEmail)
+              .expect('Location', '/users/login')
+              .end(done)
+          }
+
+      }
+
+    )
+
+
 
   afterEach(function(done) {
       return done();
@@ -74,7 +95,7 @@ describe('Tweet Test:sending a tweet...', function () {
     
   describe('tweet sended to db:'+tweetToPost, function () {
 
-      it('A tweet has been posted', function (done) {
+      it('The tweet has been posted', function (done) {
        done();
       })
 
