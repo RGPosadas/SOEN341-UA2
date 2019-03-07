@@ -1,5 +1,3 @@
-console.log(process.env.TRAVIS_COMMIT);
-console.log(process.env.TRAVIS_COMMIT_MESSAGE);
 var User, app, mongoose, request, server, should, user, agent;
 
 should   = require("should");
@@ -13,13 +11,13 @@ const userCredentials = {
     email: 'travis@travis.com',
     password: 'travis'
 }
-const userCredentials2 ={
+const wrongCredentials ={
   email:'travis@travis.com',
   password: 'wrongpassword'
 }
-describe('User', function () {
-  describe('Login test', function () {
-      it('The app should redirect to /profile when log in successful', function (done) {
+describe('Login Test', function () {
+  describe('Login test begins', function () {
+      it('The app should redirect to /profile when logged in successfully', function (done) {
         agent
         .post('/users/login')
          .send(userCredentials)
@@ -31,17 +29,20 @@ describe('User', function () {
 //            });
       }
       )
-      it('The app should redirect to /login when log in failed', function (done) {
+      it('The app should redirect to /login when login failed', function (done) {
+      {
         agent
         .post('/users/login')
-         .send(userCredentials2)
+         .send(wrongCredentials)
         .expect('Location','/users/login')
         .end(done)
-//         
+      } 
+        
       }
       )
 
   after(function(done) {
+      console.log("    Login test ends");
      process.exit();
     });
 
