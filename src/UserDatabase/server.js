@@ -50,7 +50,7 @@ app.use(bodyParser.json());
 
 // server
 const server = require("http").Server(app);
-server.listen(3000);
+module.exports = server.listen(3000);
 
 // Express Messages Middleware
 app.use(require('connect-flash')());
@@ -141,3 +141,4 @@ app.get('/clicks', (req, res) => {
     res.send(result);
   });
 });
+
