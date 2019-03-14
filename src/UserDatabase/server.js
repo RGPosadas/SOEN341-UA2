@@ -114,6 +114,7 @@ app.get('*', function(req, res, next){
 //Route Files
 app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
+app.use('/profile', require('./routes/profile'));
 
 
 //add a document to the DB collection recording the click event
