@@ -20,25 +20,41 @@ router.get('/', function (req,res) {
 
 
 //Profile Page
-router.get('/profile',ensureAuthenticated, function (req,res) {
+router.get('/profile-post',ensureAuthenticated, function (req,res) {
 
     var data;
     Tweet.find({user_id: req.user.id}, function(err, data){
         if(err) throw err;
-        res.render('profile', {
+        res.render('profile-post', {
             first_name: req.user.first_name,
             last_name: req.user.last_name,
             location: req.user.location,
             description: req.user.description,
             interests: req.user.interests,
-            tweets: data
+            tweets: data,
         });
-    });
+      });
+
+});
+
+router.get('/profile-likes',ensureAuthenticated, function (req,res) {
+
+    Tweet.find({liked_by: req.user.id}, function(err, data){
+        if(err) throw err;
+        res.render('profile-likes', {
+            first_name: req.user.first_name,
+            last_name: req.user.last_name,
+            location: req.user.location,
+            description: req.user.description,
+            interests: req.user.interests,
+            likes: data,
+        });
+      });
 
 });
 
 //Tweet Button
-router.post('/profile',  urlencodedParser, function(req, res){
+router.post('/profile-post',  urlencodedParser, function(req, res){
     
     //create it
     Tweet.create({
@@ -139,13 +155,18 @@ router.post('/unfollow',  urlencodedParser, function(req, res){
 });
 
 //GET method to show list of friends
-router.get('/friends', ensureAuthenticated, function (req,res) {
+router.get('/profile-friends', ensureAuthenticated, function (req,res) {
 
     User.find({_id: req.user.following}, function(err, data){
         if(err) {
             console.log(err);
         }
-        res.render('friends', {
+        res.render('profile-friends', {
+            first_name: req.user.first_name,
+            last_name: req.user.last_name,
+            location: req.user.location,
+            description: req.user.description,
+            interests: req.user.interests,
             users: data
         })
     });
@@ -165,13 +186,18 @@ router.get('/feed',ensureAuthenticated, function (req,res) {
 });
 
 //GET method to show list of followers
-router.get('/followers', ensureAuthenticated, function (req,res) {
+router.get('/profile-followers', ensureAuthenticated, function (req,res) {
 
     User.find({_id: req.user.followers}, function(err, data){
         if(err) {
             console.log(err);
         }
-        res.render('followers', {
+        res.render('profile-followers', {
+            first_name: req.user.first_name,
+            last_name: req.user.last_name,
+            location: req.user.location,
+            description: req.user.description,
+            interests: req.user.interests,
             users: data
         })
     });
@@ -185,8 +211,12 @@ router.post('/like',  urlencodedParser, function(req, res){
             console.log(err);
         }
         else {
-            return data;
-            //console.log(req.body.id + " Added to UserSchema following"); 
+            var response = {
+                status  : 200,
+                success : 'Updated Successfully'
+            }
+            
+            res.end(JSON.stringify(response));
         }
     })
 

@@ -1,0 +1,18 @@
+<%- include profile-layout.ejs %>
+
+<div>
+        <h4 class="mt-2">My Likes</h4>   
+        <ul class="list-group">
+           <% for(var i = likes.length-1; i >= 0; i--) { %>
+               <div>
+                   <li class="list-group-item">
+                   <h5 style="color:darkblue"><p><%= likes[i].first_name + " " + likes[i].last_name %></h5>
+                   <%= likes[i].tweet %></p>
+                   <p>Like counter: <%= likes[i].liked_by.length %> </p>
+                   <p><small style="color:darkblue"><%= likes[i]._id.getTimestamp(); %></small></p>
+                   </li>
+               </div>
+           <br />
+           <% } %>
+           </ul>
+</div>

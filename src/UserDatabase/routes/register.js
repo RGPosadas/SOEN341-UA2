@@ -40,7 +40,6 @@ router.post('/add', function (req, res) {
         description: req.body.description,
         interests: req.body.interests,
         profile_pic: req.body.profile_pic
-
     });
 
     console.log("user created");

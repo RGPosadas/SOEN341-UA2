@@ -21,15 +21,15 @@ $(document).ready(function(){
                 data: {
                     id: id
                 },
-                success: function(data){
-                  location.reload();
+                success: function(result){
+                  console.log(result);
+                  if(result.status == 200){
+                    location.reload();
+                  }
                 }
               });
         
               //$('#li-'+id).remove()
-
-              location.reload()
-              return false;
             }
 
         else{
@@ -40,9 +40,11 @@ $(document).ready(function(){
                 data: {
                     id: id
                 },
-                success: function(data){
-                  location.reload();
-                }
+                success: function(result){
+                  console.log(result);
+                  if(result.status == 200){
+                    location.reload();
+                  }                }
               });
         
               //$('#li-'+id).remove()
