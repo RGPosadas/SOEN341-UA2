@@ -53,6 +53,42 @@ router.get('/profile-likes',ensureAuthenticated, function (req,res) {
 
 });
 
+//GET method to show list of friends
+router.get('/profile-friends', ensureAuthenticated, function (req,res) {
+
+    User.find({_id: req.user.following}, function(err, data){
+        if(err) {
+            console.log(err);
+        }
+        res.render('profile-friends', {
+            first_name: req.user.first_name,
+            last_name: req.user.last_name,
+            location: req.user.location,
+            description: req.user.description,
+            interests: req.user.interests,
+            users: data
+        })
+    });
+});
+
+//GET method to show list of followers
+router.get('/profile-followers', ensureAuthenticated, function (req,res) {
+
+    User.find({_id: req.user.followers}, function(err, data){
+        if(err) {
+            console.log(err);
+        }
+        res.render('profile-followers', {
+            first_name: req.user.first_name,
+            last_name: req.user.last_name,
+            location: req.user.location,
+            description: req.user.description,
+            interests: req.user.interests,
+            users: data
+        })
+    });
+});
+
 //Tweet Button
 router.post('/profile-post',  urlencodedParser, function(req, res){
     
@@ -114,8 +150,12 @@ router.post('/suggested',  urlencodedParser, function(req, res){
             console.log(err);
         }
         else {
-            req.flash('success_msg', 'You are now following!');
-            console.log(req.body.id + " Added to UserSchema following"); 
+            var response = {
+                status  : 200,
+                success : 'Updated Successfully'
+            }
+            
+            res.end(JSON.stringify(response));
         }
     })
     
@@ -149,27 +189,15 @@ router.post('/unfollow',  urlencodedParser, function(req, res){
             console.log(err);
         }
         else {
+            var response = {
+                status  : 200,
+                success : 'Updated Successfully'
+            }
+            
+            res.end(JSON.stringify(response));
             //console.log(req.user.id + " Added to userSchema followers"); 
         }
     })
-});
-
-//GET method to show list of friends
-router.get('/profile-friends', ensureAuthenticated, function (req,res) {
-
-    User.find({_id: req.user.following}, function(err, data){
-        if(err) {
-            console.log(err);
-        }
-        res.render('profile-friends', {
-            first_name: req.user.first_name,
-            last_name: req.user.last_name,
-            location: req.user.location,
-            description: req.user.description,
-            interests: req.user.interests,
-            users: data
-        })
-    });
 });
 
 //GET method to show feed only for users that are being followed
@@ -183,24 +211,6 @@ router.get('/feed',ensureAuthenticated, function (req,res) {
         });
     });
 
-});
-
-//GET method to show list of followers
-router.get('/profile-followers', ensureAuthenticated, function (req,res) {
-
-    User.find({_id: req.user.followers}, function(err, data){
-        if(err) {
-            console.log(err);
-        }
-        res.render('profile-followers', {
-            first_name: req.user.first_name,
-            last_name: req.user.last_name,
-            location: req.user.location,
-            description: req.user.description,
-            interests: req.user.interests,
-            users: data
-        })
-    });
 });
 
 router.post('/like',  urlencodedParser, function(req, res){
@@ -230,8 +240,12 @@ router.post('/unlike',  urlencodedParser, function(req, res){
             console.log(err);
         }
         else {
-            return data;
-            //console.log(req.body.id + " Added to UserSchema following"); 
+            var response = {
+                status  : 200,
+                success : 'Updated Successfully'
+            }
+            
+            res.end(JSON.stringify(response));
         }
     })
 

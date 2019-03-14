@@ -11,7 +11,7 @@ $(document).ready(function(){
 
     $('form').on('submit', function(){
 
-        alert("You are now unfollowing!");
+        //alert("You are now unfollowing!");
         $.ajax({
           type: 'POST',
           url: '/unfollow',
@@ -19,8 +19,11 @@ $(document).ready(function(){
           data: {
               id: id
           },
-          success: function(data){
-            location.reload();
+          success: function(result){
+            console.log(result);
+            if(result.status == 200){
+              location.reload();
+            } 
           }
         });
   
