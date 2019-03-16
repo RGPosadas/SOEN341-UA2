@@ -121,19 +121,15 @@ describe('Tweet Test:liking a tweet...', function () {
   
   before(function (done) {
      
-    tweet = new Tweet({
-        tweet:tweetToPost,
-    user_id: "travis",
-    first_name: "travis",
-    last_name: "travis",
-    liked_by: "travis"
-    });
-    tweet.save(done)});
+    Tweet.update({tweet:tweetToPost},{$set:{liked_by : "travis"}});
+  
+    tweet.save(done)
+  });
 
   
 describe('like sended to db:'+tweetToPost, function () {
 
-    it('The tweet has been posted and liked', function (done) {
+    it('The tweet was liked by travis', function (done) {
      done();
     })
 
