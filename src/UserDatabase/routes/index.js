@@ -114,7 +114,7 @@ router.post('/unfollow',  urlencodedParser, function(req, res){
 //GET method to show feed only for users that are being followed
 router.get('/feed',ensureAuthenticated, function (req,res) {
 
-    Tweet.find({user_id: req.user.following}, function(err, data){
+    Tweet.find({$or:[{user_id: req.user.following},{user_id: req.user.id}]}, function(err, data){
         if(err) throw err;
         res.render('feed', {
             user: req.user.id,
