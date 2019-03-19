@@ -107,11 +107,8 @@ describe('Tweet Test:sending a tweet...', function () {
           console.log("Query results: " + data);
             if(data.tweet == tweetToPost){
                 console.log("Tweet successfully found in database");
-               // process.exit();
             }
-           
       });
-   
       })
 
 })
