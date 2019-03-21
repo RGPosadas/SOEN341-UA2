@@ -87,7 +87,7 @@ describe('Tweet Test:sending a tweet...', function () {
         first_name: "Tweet",
       last_name: "Poster",
       email: "tweetposter@kiwi.com",
-      password: "test",
+      password: "Jeneparlepasfrancais123",
       follower:[],
       following: [],
       location: "test",
@@ -102,6 +102,7 @@ describe('Tweet Test:sending a tweet...', function () {
       last_name: tweetPoster.last_name,
       liked_by: []
       });
+      tweetPoster.save();
       tweet.save(done)});
 
 
@@ -142,6 +143,7 @@ describe('Tweet Test:liking a tweet...', function () {
     }); 
     //Tweet.update({user_id: tweetPoster.id},{$push:{liked_by : tweetLiker.id}});
     tweet.liked_by.push(tweetLiker.id);
+    tweetLiker.save();
     tweet.save(done)
   });
 
