@@ -32,7 +32,7 @@ describe('Login Test', function () {
         agent
         .post('/users/login')
          .send(userCredentials)
-        .expect('Location','/profile')
+        .expect('Location','/profile/post')
         .end(done)
 
       }
@@ -44,8 +44,8 @@ describe('Login Test', function () {
          .send(wrongPassword)
         .expect('Location','/users/login')
         .end(done)
-      } 
-        
+      }
+
       }
 
       )
@@ -80,9 +80,9 @@ describe('Login Test', function () {
 
 describe('Tweet Test:sending a tweet...', function () {
     var tweetToPost = "[Travis-CI Testing] Commit " + String(process.env.TRAVIS_COMMIT) + "/" + String(process.env.TRAVIS_COMMIT_MESSAGE);
-    
+
     before(function (done) {
-       
+
       tweet = new Tweet({
           tweet:tweetToPost,
       user_id: "travis",
@@ -91,17 +91,17 @@ describe('Tweet Test:sending a tweet...', function () {
       liked_by: []
       });
       tweet.save(done)});
-  
-    
+
+
   describe('tweet sended to db:'+tweetToPost, function () {
 
       it('The tweet has been posted', function (done) {
        done();
       })
 
-      
+
       after(function(){
-          var tweetToPost = "[Travis-CI Testing] Commit " + String(process.env.TRAVIS_COMMIT) + "/" + String(process.env.TRAVIS_COMMIT_MESSAGE);      
+          var tweetToPost = "[Travis-CI Testing] Commit " + String(process.env.TRAVIS_COMMIT) + "/" + String(process.env.TRAVIS_COMMIT_MESSAGE);
           Tweet.findOne({ tweet: tweetToPost }, function (err, data) {
           if (err) throw err;
           console.log("Query results: " + data);
@@ -109,12 +109,10 @@ describe('Tweet Test:sending a tweet...', function () {
                 console.log("Tweet successfully found in database");
                 process.exit();
             }
-           
+
       });
-   
+
       })
 
 })
 })
-
- 
