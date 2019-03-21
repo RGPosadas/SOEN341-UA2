@@ -11,7 +11,7 @@ $(document).ready(function(){
     console.log("document ready")
     $('form').on('submit', function(){
 
-        alert("You are now following!");
+        //alert("You are now following!");
         $.ajax({
           type: 'POST',
           url: '/suggested',
@@ -19,8 +19,11 @@ $(document).ready(function(){
           data: {
               id: id
           },
-          success: function(data){
-            location.reload();
+          success: function(result){
+            console.log(result);
+            if(result.status == 200){
+              location.reload();
+            } 
           }
         });
   
