@@ -1,8 +1,9 @@
-var User, app, mongoose, request, server, should, user, agent;
+var  app, mongoose, request, server, should, user, agent;
 should   = require("should");
 app      = require("../server");
 mongoose = require("mongoose");
 const Tweet = require("../database_models/tweet_model");
+const User = require("../database_models/user_model");
 request  = require("supertest");
 agent = request.agent(app);
 
@@ -82,14 +83,26 @@ describe('Tweet Test:sending a tweet...', function () {
     var tweetToPost = "[Travis-CI Testing] Commit " + String(process.env.TRAVIS_COMMIT) + "/" + String(process.env.TRAVIS_COMMIT_MESSAGE);
 
     before(function (done) {
+      tweetPoster = new User({
+        first_name: "Tweet",
+      last_name: "Poster",
+      email: "tweetposter@kiwi.com",
+      password: "Jeneparlepasfrancais123",
+      follower:[],
+      following: [],
+      location: "test",
+      description: "test",
+      interests: "test",
+      }); 
 
       tweet = new Tweet({
           tweet:tweetToPost,
-      user_id: "travis",
-      first_name: "travis",
-      last_name: "travis",
+      user_id: tweetPoster.id,
+      first_name: tweetPoster.first_name,
+      last_name: tweetPoster.last_name,
       liked_by: []
       });
+      tweetPoster.save();
       tweet.save(done)});
 
 
@@ -102,7 +115,7 @@ describe('Tweet Test:sending a tweet...', function () {
 
       after(function(){
           var tweetToPost = "[Travis-CI Testing] Commit " + String(process.env.TRAVIS_COMMIT) + "/" + String(process.env.TRAVIS_COMMIT_MESSAGE);
-          Tweet.findOne({ tweet: tweetToPost }, function (err, data) {
+          Tweet.findOne({ user_id: tweetPoster.id }, function (err, data) {
           if (err) throw err;
           console.log("Query results: " + data);
             if(data.tweet == tweetToPost){
@@ -117,9 +130,20 @@ describe('Tweet Test:liking a tweet...', function () {
   var tweetToPost = "[Travis-CI Testing] Commit " + String(process.env.TRAVIS_COMMIT) + "/" + String(process.env.TRAVIS_COMMIT_MESSAGE);
   
   before(function (done) {
-     
-    Tweet.update({tweet:tweetToPost},{$set:{liked_by : "travis"}});
-  
+    tweetLiker = new User({
+      first_name: "Tweet",
+    last_name: "Liker",
+    email: "tweetliker@kiwi.com",
+    password: "test",
+    follower:[],
+    following: [],
+    location: "test",
+    description: "test",
+    interests: "test",
+    }); 
+    //Tweet.update({user_id: tweetPoster.id},{$push:{liked_by : tweetLiker.id}});
+    tweet.liked_by.push(tweetLiker.id);
+    tweetLiker.save();
     tweet.save(done)
   });
 
@@ -133,10 +157,10 @@ describe('like sended to db:'+tweetToPost, function () {
     
     after(function(){
         var tweetToPost = "[Travis-CI Testing] Commit " + String(process.env.TRAVIS_COMMIT) + "/" + String(process.env.TRAVIS_COMMIT_MESSAGE);      
-        Tweet.findOne({ liked_by: "travis" }, function (err, data) {
+        Tweet.findOne({ user_id: tweetPoster.id }, function (err, data) {
         if (err) throw err;
         console.log("Query results: " + data);
-          if(data.liked_by.includes("travis")){
+          if(data.liked_by.indexOf(tweetLiker.id)==0){
               console.log("Liked successfully");
               process.exit();
           }
