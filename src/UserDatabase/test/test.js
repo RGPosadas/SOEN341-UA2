@@ -5,6 +5,8 @@ mongoose = require("mongoose");
 const Tweet = require("../database_models/tweet_model");
 request  = require("supertest");
 agent = request.agent(app);
+const expect = require('chai').expect
+
 
 
 
@@ -62,6 +64,7 @@ describe('Login Test', function () {
       }
 
     )
+    
 
 
 
@@ -113,7 +116,7 @@ describe('Tweet Test:sending a tweet...', function () {
 
 })
 })
-describe('Tweet Test:liking a tweet...', function () {
+/*describe('Tweet Test:liking a tweet...', function () {
   var tweetToPost = "[Travis-CI Testing] Commit " + String(process.env.TRAVIS_COMMIT) + "/" + String(process.env.TRAVIS_COMMIT_MESSAGE);
   
   before(function (done) {
@@ -146,6 +149,67 @@ describe('like sended to db:'+tweetToPost, function () {
     })
 
 })
-})
+})*/
+
+
+
+  describe('Extra feature test', function () {
+      it('The profile has like tab which redirect to /profile/likes', function (done) {
+       request(app)
+        .get('/profile/likes')
+         .then(function(response){
+          expect('Location','/profile/likes');
+        
+          
+          done();
+          
+      })
+      
+  
+});
+    it('The profile has my post tab which redirect to /profile/post', function (done) {
+       request(app)
+        .get('/profile/post')
+         .then(function(response){
+          expect('Location','/profile/post');
+        
+          
+          done();
+          
+      })
+      
+  
+});
+    it('The profile has followers tab which redirect to /profile/followers', function (done) {
+       request(app)
+        .get('/profile/followers')
+         .then(function(response){
+          expect('Location','/profile/followers');
+        
+          
+          done();
+          
+      })
+      
+  
+});
+    it('The profile has following tab which redirect to /profile/following', function (done) {
+       request(app)
+        .get('/profile/friends')
+         .then(function(response){
+          expect('Location','/profile/friends');
+        
+          
+          done();
+          process.exit();
+      })
+      
+  
+});
+  });
+
+
+
+
 
  
