@@ -5,65 +5,67 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <script src="/js/jquery.js"></script>
-  
-   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-  <link
-          rel="stylesheet"
-          href="https://bootswatch.com/4/flatly/bootstrap.min.css"
-  />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <!-- TERRIBBLE hack to show the whole content of page -->
+  <style>
+    body { 
+      padding-top: 65px; 
+    }
+  </style>
   <title>KIWI</title>
 </head>
 <body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <!-- LOGO -->  
+      <a class="navbar-brand" href="#">Twitter</a>
 
-<nav class="navbar navbar-expand-md navbar-dark bg-dark static-top">
-  <a class="navbar-brand" href="/"><i class="fas fa-kiwi-bird"></i> KIWI</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+      <!-- We could collapse this section if we had mobile responsive website-->
+      <div>
+        <!-- Unordered list for the links -->
+          <ul class="navbar-nav ml-auto"><!-- ml-auto means that it will be aligned all the way to the right (margin-left: auto)-->
 
-  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <% if(!user){ %>
-        <a class="nav-link" href="/users/login">Log In<span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/users/register">Register</a>
-      </li>
-      <% } %>
-      <% if(user) { %>
-      <li class="nav-item">
-        <a class="nav-link" href="/profile/post">My Profile</a>
-      </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/feed">My Feed</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/suggested">Suggested Users</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/users/logout">Logout</a>
-        </li>
-        <% } %>
-    </ul>
-  </div>
-</nav>
+          <!-- If user is not logged in then show this -->
+          <% if(!user){ %>
 
-<div class="container"><%- body %></div>
-<!-- <script
-        src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"
-></script>
-<script
-        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
-        integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
-        crossorigin="anonymous"
-></script>
-<script
-        src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
-        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
-        crossorigin="anonymous"
-></script> -->
+          <li class="nav-item">
+            <a class="nav-link" href="/users/login">Log In<span class="sr-only">(current)</span></a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/users/register">Register</a>
+          </li>
+
+          <% } %>
+
+          <!-- If user is logged in then show this -->
+          <% if(user) { %>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/profile/post">My Profile</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/feed">My Feed</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/suggested">Suggested Users</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/users/logout">Logout</a>
+          </li>
+
+          <% } %><!-- END/user logged in-->
+
+          </ul><!--END/Unordered list-->
+        </div><!-- END/section-->
+      </div><!-- END/container to center it-->
+  </nav>
+
+  <div class="container"><%- body %></div>
+
 </body>
 </html>
