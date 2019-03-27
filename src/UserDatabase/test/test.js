@@ -6,7 +6,8 @@ const Tweet = require("../database_models/tweet_model");
 const User = require("../database_models/user_model");
 request  = require("supertest");
 agent = request.agent(app);
-
+const shortid = require("shortid");
+var ObjectId = mongoose.Types.ObjectId
 
 
 
@@ -141,7 +142,6 @@ describe('Tweet Test:liking a tweet...', function () {
     description: "test",
     interests: "test",
     }); 
-    //Tweet.update({user_id: tweetPoster.id},{$push:{liked_by : tweetLiker.id}});
     tweet.liked_by.push(tweetLiker.id);
     tweetLiker.save();
     tweet.save(done)
@@ -162,7 +162,6 @@ describe('like sended to db:'+tweetToPost, function () {
         console.log("Query results: " + data);
           if(data.liked_by.indexOf(tweetLiker.id)==0){
               console.log("Liked successfully");
-              process.exit();
           }
          
     });
@@ -172,4 +171,53 @@ describe('like sended to db:'+tweetToPost, function () {
 })
 })
 
+describe('Tweet Test: following another user...', function(){
+
+  before(function(done){ 
+    user1 = new User({
+      first_name: "user1",
+    last_name: "user1",
+    email: "user1@kiwi.com",
+    password: "test",
+    follower:[],
+    following: [],
+    location: "location2",
+    description: "location2",
+    interests: "test",
+    }); 
+
+    user2 = new User({   
+      first_name: "user2",
+    last_name: "user2",
+    email: "user2@kiwi.com",
+    password: "test",
+    follower:[],
+    following: [],
+    location: "test",
+    description: "test",
+    interests: "test",
+    });
+    user1.following.push(ObjectId(user2.id)); 
+    user2.save();
+    user1.save(done);
+
+});
+
+describe('following was sent to db: ' , function(){
+
+  it('Travis is now following the user ', function(done){
+    done();
+  })
+  after(function(){
+
+    User.findOne({"_id": ObjectId(user1.id)}, function (err, data){
+      if (err) throw err;
+      if(data.following.indexOf(user2.id)==0){  
+        console.log("Following user2 successfully!");
+
+      }
+    });
+  })
+})
+})
  
