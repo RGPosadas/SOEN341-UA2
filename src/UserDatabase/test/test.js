@@ -141,7 +141,13 @@ describe('Tweet Test:sending a tweet...', function () {
 describe('Tweet Test:liking a tweet...', function () {
   var tweetToPost = "[Travis-CI Testing] Commit " + String(process.env.TRAVIS_COMMIT) + "/" + String(process.env.TRAVIS_COMMIT_MESSAGE);
   
-  before(function (done) {  
+  before(function (done) {
+    tweet.liked_by.push(user1.id);
+    user1.save();
+    tweet.save(done)
+  });
+
+  
 describe('like sended to db:'+tweetToPost, function () {
 
     it('The tweet was liked by travis', function (done) {
@@ -168,11 +174,9 @@ describe('like sended to db:'+tweetToPost, function () {
 describe('Tweet Test: following another user...', function(){
 
   before(function(done){ 
-      
     user1.following.push(ObjectId(user2.id)); 
     user2.save();
     user1.save(done);
-
 });
 
 describe('following was sent to db: ' , function(){
@@ -218,4 +222,5 @@ describe('Tweet Test: unfollowing another user ...', function(){
    })
   })
 })
+
 
