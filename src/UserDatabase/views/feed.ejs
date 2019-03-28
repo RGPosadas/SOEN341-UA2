@@ -1,41 +1,55 @@
 <!--  include another view file (partial) inside a .ejs view file -->
-<head>
-   </head>
-   <div>
-       <h1 class="mt-4">My Feed</h1>
-   
-       <div class = "card-body" id="user-profile">
-       </div>
-       <div class = "card-body" id="tweet-table-1">
-           <div>   
-                <ul class="list-group">
-                   <% for(var i = tweets.length-1; i >= 0; i--) { %>
-                       <div>
-                        <!-- <%= tweetId= tweets[i]._id%> -->
-                           <li class="list-group-item" id=<%= "li-"+tweets[i]._id %>>
-                            <h5 style="color:darkblue"><%= tweets[i].first_name + " " + tweets[i].last_name %></h5>
-                            <p><%= tweets[i].tweet %></p>
-                            <p>Like counter: <%= tweets[i].liked_by.length %> </p>
+<div>
+    <h1 class = "custom-link2"> My Feed </h1>
+    <!-- CARD -->
+    <div class = "card-body" id="tweet-table-1">
+
+        <div>   
+            <ul class="list-group">
+                <% for(var i = tweets.length-1; i >= 0; i--) { %>
+                    <!--Posted-->
+                    <div class="card gedf-card mb-5 border-0">
+                        <li class="list-group-item">
+
+                            <div class="card-header">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="mr-2">
+                                            <img class="rounded-circle" width="45" src="https://picsum.photos/1000/1000?random" alt="">
+                                        </div>
+                                        <div class="ml-2">
+                                                <div class="h5 m-0"><%= tweets[i].first_name + " " + tweets[i].last_name %></div>
+                                                <div class="h7 text-muted"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card-body">
+                                <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i> <%= tweets[i]._id.getTimestamp(); %></div>
+                                <p class="card-text"><%= tweets[i].tweet %></p>
+                                <p> <%= tweets[i].liked_by.length %> </p>
+                            </div>
+
                             <% if(!tweets[i].liked_by.includes(user)) { %>
-                            <form>
-                                <button type="submit" value="like" id=<%=tweets[i]._id %>>Like</button>
-                            </form>
+                                <form>
+                                    <button class="btn bg-custom btn-block col-md-1" type="submit" value="like" id=<%=tweets[i]._id %>>Like</button>
+                                </form>
+                                <% } %>
+                                <% if(tweets[i].liked_by.includes(user)) { %>
+                                <form>
+                                    <button class="btn bg-custom btn-block col-md-1"><i class="fa fa-gittip" type="submit" value="unlike" id=<%=tweets[i]._id %>>Unlike</button>
+                                </form>
                             <% } %>
-                            <% if(tweets[i].liked_by.includes(user)) { %>
-                            <form>
-                                <button type="submit" value="unlike" id=<%=tweets[i]._id %>>Unlike</button>
-                            </form>
-                            <% } %>
-                            <p><small style="color:darkblue"><%= tweets[i]._id.getTimestamp(); %></small></p>
-                           </li>
-                       </div>
-                   <br />
-                   <% } %>
-                   </ul>
-               </div>
+
+                        </li>
+                    </div><!-- END/posted-->
+                <% } %>
+            </ul>
+        </div>
+    </div>  
+</div>
    
-           </div>  
-       </div>
-   
-   </div>
-   <script src="/js/like.js"></script>
+<script src="/js/like.js"></script>
+
+

@@ -1,24 +1,39 @@
 <!--  include another view file (partial) inside a .ejs view file -->
 <div>
-    <h1 class="mt-4">Suggested Users</h1>
-
-    <div class = "card-body" id="user-profile">
-    </div>
+    <h1 class = "custom-link2"> Suggest Users </h1>
     <div class = "card-body" id="user-table-1">
-        <h1 class = "lead mb-3"> Users </h1>
         <ul class="list-group">
+
+
             <% for(var i = users.length-1; i >= 0; i--) { %>
-                <div>
+                <div class="mt-5">
                     <li class="list-group-item" id=<%= "li-"+users[i]._id %>>
-                        <p><%= users[i].first_name + " " + users[i].last_name %></p>
-                        <form>
-                            <button type="submit" id=<%= users[i]._id %>>Follow</button>
-                        </form>
+                            <div class="card-header">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="mr-2">
+                                            <img class="rounded-circle" width="45" src="https://picsum.photos/1000/1000?random" alt="">
+                                        </div>
+                                        <div class="ml-2">
+                                                <div class="h5 m-0"><%= users[i].first_name + " " + users[i].last_name %></div>
+                                                <div class="h7 text-muted"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        <div class="card-footer">
+                            <form>
+                                <button class="btn bg-custom btn-block col-md-1" type="submit" id=<%= users[i]._id %>>Follow</button>
+                            </form>
+                        </div>
                     </li>
                 </div>
             <% } %>
+
+
+
         </ul>
     </div>
-
 </div>
 <script src="/js/follow.js"></script>
