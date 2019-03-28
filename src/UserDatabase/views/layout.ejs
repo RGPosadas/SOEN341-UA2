@@ -11,12 +11,18 @@
     body { 
       padding-top: 65px; 
     }
+
+    .bg-custom{
+      background-color: #7476FF;
+      color: white;
+    }
+
   </style>
   <title>KIWI</title>
 </head>
 <body>
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top">
     <div class="container">
       <!-- LOGO -->  
       <a class="navbar-brand" href="#">Twitter</a>
@@ -30,7 +36,7 @@
           <% if(!user){ %>
 
           <li class="nav-item">
-            <a class="nav-link" href="/users/login">Log In<span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/users/login">Log In</a>
           </li>
 
           <li class="nav-item">
