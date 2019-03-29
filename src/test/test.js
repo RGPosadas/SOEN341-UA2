@@ -54,7 +54,7 @@ const wrongEmail ={
 
       //LOGIN TEST
 describe('Login Test', function () {
-  describe('Login test begins', function () {
+  describe('LOGIN TEST BEGINS', function () {
       it('The app should redirect to /profile when logged in successfully', function (done) {
         agent
         .post('/users/login')
@@ -98,7 +98,7 @@ describe('Login Test', function () {
   });
 
   after(function () {
-      console.log("    Login test ends");
+      console.log("    LOGIN TEST ENDS");
   });
 
 })
@@ -106,7 +106,7 @@ describe('Login Test', function () {
 
 
 //TWEET TEST
-describe('Tweet Test:sending a tweet...', function () {
+describe('TWEET TEST BEGINS', function () {
     var tweetToPost = "[Travis-CI Testing] Commit " + String(process.env.TRAVIS_COMMIT) + "/" + String(process.env.TRAVIS_COMMIT_MESSAGE);
 
     before(function (done) {
@@ -122,7 +122,7 @@ describe('Tweet Test:sending a tweet...', function () {
       tweet.save(done)});
 
 
-  describe('tweet sended to db:'+tweetToPost, function () {
+  describe('Posting tweet:'+tweetToPost, function () {
 
       it('The tweet has been posted', function (done) {
        done();
@@ -133,9 +133,10 @@ describe('Tweet Test:sending a tweet...', function () {
           var tweetToPost = "[Travis-CI Testing] Commit " + String(process.env.TRAVIS_COMMIT) + "/" + String(process.env.TRAVIS_COMMIT_MESSAGE);
           Tweet.findOne({ user_id: user1.id }, function (err, data) {
           if (err) throw err;
-          console.log("Query results: " + data);
+         // console.log("Query results: " + data);
             if(data.tweet == tweetToPost){
-                console.log("Tweet successfully found in database");
+                //console.log("Tweet successfully found in database");
+                console.log("TWEET TEST ENDS")
             }
       });
       })
@@ -145,7 +146,7 @@ describe('Tweet Test:sending a tweet...', function () {
 
 
 //LIKE TEST
-describe('Tweet Test:liking a tweet...', function () {
+describe('LIKE TEST BEGINS', function () {
   var tweetToPost = "[Travis-CI Testing] Commit " + String(process.env.TRAVIS_COMMIT) + "/" + String(process.env.TRAVIS_COMMIT_MESSAGE);
   
   before(function (done) {
@@ -155,9 +156,9 @@ describe('Tweet Test:liking a tweet...', function () {
   });
 
   
-describe('like sended to db:'+tweetToPost, function () {
+describe('Liking this tweet:'+tweetToPost, function () {
 
-    it('The tweet was liked by travis', function (done) {
+    it('The tweet was liked ', function (done) {
      done();
     })
 
@@ -166,9 +167,10 @@ describe('like sended to db:'+tweetToPost, function () {
         var tweetToPost = "[Travis-CI Testing] Commit " + String(process.env.TRAVIS_COMMIT) + "/" + String(process.env.TRAVIS_COMMIT_MESSAGE);      
         Tweet.findOne({ user_id: user1.id }, function (err, data) {
         if (err) throw err;
-        console.log("Query results: " + data);
+        //console.log("Query results: " + data);
           if(data.liked_by.indexOf(user1.id)==0){
-              console.log("Liked successfully");
+              //console.log("Liked successfully");
+              console.log("LIKE TEST ENDS")
           }
          
     });
@@ -185,7 +187,7 @@ describe('like sended to db:'+tweetToPost, function () {
 
 
 //FOLLOWING TEST
-describe('Tweet Test: following another user...', function(){
+describe('FOLLOWING TEST BEGINS', function(){
 
   before(function(done){ 
     user1.following.push(ObjectId(user2.id)); 
@@ -193,7 +195,7 @@ describe('Tweet Test: following another user...', function(){
     user1.save(done);
 });
 
-describe('following was sent to db: ' , function(){
+describe('Following was sent to db: ' , function(){
 
   it('Travis is now following the user ', function(done){
     done();
@@ -203,7 +205,8 @@ describe('following was sent to db: ' , function(){
     User.findOne({"_id": ObjectId(user1.id)}, function (err, data){
       if (err) throw err;
       if(data.following.indexOf(user2.id)==0){  
-        console.log("Following user2 successfully!");
+        //console.log("Following user2 successfully!");
+        console.log("FOLLOWING TEST ENDS")
 
       }
     });
@@ -211,17 +214,17 @@ describe('following was sent to db: ' , function(){
 })
 })
 //UNFOLLOWING TEST
-describe('Tweet Test: unfollowing another user ...', function(){
+describe('UNFOLLOWING TEST BEGINS', function(){
 
   before(function(done){
     user1.following.push(ObjectId(user2.id)); 
     user2.save();
-    console.log(user1);
+    //console.log(user1);
     user1.following.shift();
     user1.save(done);
-    console.log(user1);
+   // console.log(user1);
   });
-  describe('unfollow was sent to the db: ', function(){
+  describe('Unfollow was sent to the db: ', function(){
     it('Travis has unfollowed the user ', function(done){
       done();
     })
@@ -229,7 +232,8 @@ describe('Tweet Test: unfollowing another user ...', function(){
     User.findOne({"_id": ObjectId(user1.id)}, function (err, data){
       if (err) throw err;
       if (data.following.indexOf(user2.id==null)){
-        console.log("Unfollowing successfully!");
+        //console.log("Unfollowing successfully!");
+        console.log("UNFOLLOWING TEST ENDS");
      
       }
     });
@@ -239,7 +243,7 @@ describe('Tweet Test: unfollowing another user ...', function(){
 
 
 //EXTRA FEATURE TESTS
-describe('Extra feature test', function () {
+describe('EXTRA FEATURE TESTS BEGIN', function () {
   it('The profile has like tab which redirect to /profile/likes', function (done) {
    request(app)
     .get('/profile/likes')
@@ -287,11 +291,16 @@ it('The profile has following tab which redirect to /profile/following', functio
     
       
       done();
-      process.exit();
+      
   })
   
 
 });
+after(function(){
+    console.log("ALL EXTRA FEATURE TESTS END");
+    process.exit();
+    
+  });
 });
 
 
