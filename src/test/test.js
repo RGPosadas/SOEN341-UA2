@@ -53,8 +53,8 @@ const wrongEmail ={
       }); 
 
       //LOGIN TEST
-describe('Login Test', function () {
-  describe('LOGIN TEST BEGINS', function () {
+describe('', function () {
+  describe('LOGIN TEST:', function () {
       it('The app should redirect to /profile when logged in successfully', function (done) {
         agent
         .post('/users/login')
@@ -97,16 +97,13 @@ describe('Login Test', function () {
       return done();
   });
 
-  after(function () {
-      console.log("    LOGIN TEST ENDS");
-  });
 
 })
 })
 
 
 //TWEET TEST
-describe('TWEET TEST BEGINS', function () {
+describe('TWEET TEST:', function () {
     var tweetToPost = "[Travis-CI Testing] Commit " + String(process.env.TRAVIS_COMMIT) + "/" + String(process.env.TRAVIS_COMMIT_MESSAGE);
 
     before(function (done) {
@@ -122,7 +119,7 @@ describe('TWEET TEST BEGINS', function () {
       tweet.save(done)});
 
 
-  describe('Posting tweet:'+tweetToPost, function () {
+  describe('Posting tweet: '+tweetToPost, function () {
 
       it('The tweet has been posted', function (done) {
        done();
@@ -133,10 +130,9 @@ describe('TWEET TEST BEGINS', function () {
           var tweetToPost = "[Travis-CI Testing] Commit " + String(process.env.TRAVIS_COMMIT) + "/" + String(process.env.TRAVIS_COMMIT_MESSAGE);
           Tweet.findOne({ user_id: user1.id }, function (err, data) {
           if (err) throw err;
-         // console.log("Query results: " + data);
+        
             if(data.tweet == tweetToPost){
-                //console.log("Tweet successfully found in database");
-                console.log("TWEET TEST ENDS")
+                
             }
       });
       })
@@ -146,7 +142,7 @@ describe('TWEET TEST BEGINS', function () {
 
 
 //LIKE TEST
-describe('LIKE TEST BEGINS', function () {
+describe('LIKE TEST:', function () {
   var tweetToPost = "[Travis-CI Testing] Commit " + String(process.env.TRAVIS_COMMIT) + "/" + String(process.env.TRAVIS_COMMIT_MESSAGE);
   
   before(function (done) {
@@ -156,7 +152,7 @@ describe('LIKE TEST BEGINS', function () {
   });
 
   
-describe('Liking this tweet:'+tweetToPost, function () {
+describe('Liking this tweet: '+tweetToPost, function () {
 
     it('The tweet was liked ', function (done) {
      done();
@@ -167,10 +163,9 @@ describe('Liking this tweet:'+tweetToPost, function () {
         var tweetToPost = "[Travis-CI Testing] Commit " + String(process.env.TRAVIS_COMMIT) + "/" + String(process.env.TRAVIS_COMMIT_MESSAGE);      
         Tweet.findOne({ user_id: user1.id }, function (err, data) {
         if (err) throw err;
-        //console.log("Query results: " + data);
+       
           if(data.liked_by.indexOf(user1.id)==0){
-              //console.log("Liked successfully");
-              console.log("LIKE TEST ENDS")
+             
           }
          
     });
@@ -187,7 +182,7 @@ describe('Liking this tweet:'+tweetToPost, function () {
 
 
 //FOLLOWING TEST
-describe('FOLLOWING TEST BEGINS', function(){
+describe('FOLLOWING TEST:', function(){
 
   before(function(done){ 
     user1.following.push(ObjectId(user2.id)); 
@@ -205,24 +200,21 @@ describe('Following was sent to db: ' , function(){
     User.findOne({"_id": ObjectId(user1.id)}, function (err, data){
       if (err) throw err;
       if(data.following.indexOf(user2.id)==0){  
-        //console.log("Following user2 successfully!");
-        console.log("FOLLOWING TEST ENDS")
-
+        
       }
     });
   })
 })
 })
 //UNFOLLOWING TEST
-describe('UNFOLLOWING TEST BEGINS', function(){
+describe('UNFOLLOWING TEST:', function(){
 
   before(function(done){
-    user1.following.push(ObjectId(user2.id)); 
+   
     user2.save();
-    //console.log(user1);
     user1.following.shift();
     user1.save(done);
-   // console.log(user1);
+    
   });
   describe('Unfollow was sent to the db: ', function(){
     it('Travis has unfollowed the user ', function(done){
@@ -232,8 +224,7 @@ describe('UNFOLLOWING TEST BEGINS', function(){
     User.findOne({"_id": ObjectId(user1.id)}, function (err, data){
       if (err) throw err;
       if (data.following.indexOf(user2.id==null)){
-        //console.log("Unfollowing successfully!");
-        console.log("UNFOLLOWING TEST ENDS");
+        
      
       }
     });
@@ -243,7 +234,7 @@ describe('UNFOLLOWING TEST BEGINS', function(){
 
 
 //EXTRA FEATURE TESTS
-describe('EXTRA FEATURE TESTS BEGIN', function () {
+describe('EXTRA FEATURE TESTS:', function () {
   it('The profile has like tab which redirect to /profile/likes', function (done) {
    request(app)
     .get('/profile/likes')
@@ -297,7 +288,7 @@ it('The profile has following tab which redirect to /profile/following', functio
 
 });
 after(function(){
-    console.log("ALL EXTRA FEATURE TESTS END");
+    
     process.exit();
     
   });

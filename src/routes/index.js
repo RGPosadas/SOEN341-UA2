@@ -6,10 +6,8 @@ const {ensureAuthenticated} = require('../config/auth');
 const mongoose = require("mongoose");
 var ObjectId = mongoose.Types.ObjectId
 
-
 const Tweet = require("../database_models/tweet_model");
 const User = require("../database_models/user_model");
-
 
 //Home page
 router.get('/', function (req,res) {
@@ -22,7 +20,6 @@ router.get('/', function (req,res) {
 router.get('/suggested', ensureAuthenticated, function (req,res) {
 
     if(req.user.following.length > 0){
-
         //map the following array of strings into a new array of object ids
         let objectIdArray = req.user.following.map(s => new ObjectId(s));
         //add current user to the array as well
@@ -65,7 +62,6 @@ router.post('/suggested',  urlencodedParser, function(req, res){
                 status  : 200,
                 success : 'Updated Successfully'
             }
-            
             res.end(JSON.stringify(response));
         }
     })
@@ -104,9 +100,8 @@ router.post('/unfollow',  urlencodedParser, function(req, res){
                 status  : 200,
                 success : 'Updated Successfully'
             }
-            
             res.end(JSON.stringify(response));
-            //console.log(req.user.id + " Added to userSchema followers"); 
+            //console.log(req.user.id + " Added to userSchema followers");  
         }
     })
 });
@@ -136,7 +131,6 @@ router.post('/like',  urlencodedParser, function(req, res){
                 status  : 200,
                 success : 'Updated Successfully'
             }
-            
             res.end(JSON.stringify(response));
         }
     })
@@ -155,10 +149,10 @@ router.post('/unlike',  urlencodedParser, function(req, res){
                 status  : 200,
                 success : 'Updated Successfully'
             }
-            
             res.end(JSON.stringify(response));
         }
     })
 
 });
+
 module.exports = router;
