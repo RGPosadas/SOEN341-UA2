@@ -11,7 +11,6 @@ $(document).ready(function(){
 
     $('form').on('submit', function(){
 
-        //alert("You are now unfollowing!");
         $.ajax({
           type: 'POST',
           url: '/unfollow',
