@@ -31,7 +31,9 @@ This project's goal is to create a web application similar to Twitter.
 * You must have `nodemon` installed. If you don't, run `npm install -g nodemon` to download it
 * Run `nodemon server.js` 
 * Go to your web browser and type `localhost:3000` to access the application
-
+    * There is an issue after running `npm install`: found 1 moderate severity vulnerability 
+    run `npm audit fix` to fix them, or `npm audit` for details. This is an upstream problem with
+    the mocha module, a fix may be available in a future version.
 ## Setting Up Testing
 In order to run the tests, you must:
 * Head to src/
