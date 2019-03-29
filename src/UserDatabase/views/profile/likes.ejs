@@ -1,18 +1,38 @@
 <%- include profile-layout.ejs %>
 
+
 <div>
-        <h4 class="mt-2">My Likes</h4>   
-        <ul class="list-group">
-           <% for(var i = likes.length-1; i >= 0; i--) { %>
-               <div>
-                   <li class="list-group-item">
-                   <h5 style="color:darkblue"><p><%= likes[i].first_name + " " + likes[i].last_name %></h5>
-                   <%= likes[i].tweet %></p>
-                   <p>Like counter: <%= likes[i].liked_by.length %> </p>
-                   <p><small style="color:darkblue"><%= likes[i]._id.getTimestamp(); %></small></p>
-                   </li>
-               </div>
-           <br />
-           <% } %>
-           </ul>
+    <ul class="list-group">
+        <% for(var i = likes.length-1; i >= 0; i--) { %>
+            <!--Posted-->
+            <div class="card gedf-card mb-5 border-0">
+                <li class="list-group-item">
+                    <div class="card-header">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="mr-2">
+                                    <img class="rounded-circle" width="45" src="/img/kiwi.jpg" alt="">
+                                </div>
+                                <div class="ml-2">
+                                    <div class="h5 m-0"><%= likes[i].first_name + " " + likes[i].last_name %></div>
+                                    <div class="h7 text-muted"><%= location %></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i> <%= likes[i]._id.getTimestamp(); %></div>
+
+                        <p class="card-text"><%= likes[i].tweet %></p>
+
+                    </div>
+
+                    <div class="card-footer">
+                        <p class="custom-link1"> <i class="fas fa-thumbs-up"></i> <%= likes[i].liked_by.length %> </p>
+                    </div>
+                </li>
+            </div><!-- END/posted-->
+        <% } %>
+    </ul>
 </div>

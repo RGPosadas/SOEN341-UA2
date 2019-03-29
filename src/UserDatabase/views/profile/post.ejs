@@ -2,10 +2,6 @@
 <%- include profile-layout.ejs %>
 <script src="/js/tweet_ajax.js"></script>
 
-<div class = "card-body" id="tweet-table-1"></div>
-
-    <h1 class = "custom-link2"> Tweets </h1>
-
     <!--Post-->
         <div class="card mb-5">
         <div class="card-header border-0">
@@ -44,7 +40,7 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="mr-2">
-                                    <img class="rounded-circle" width="45" src="https://picsum.photos/1000/1000?random" alt="">
+                                    <img class="rounded-circle" width="45" src="/img/kiwi.jpg" alt="">
                                 </div>
                                 <div class="ml-2">
                                     <div class="h5 m-0"><%= first_name + " " + last_name %></div>
@@ -62,7 +58,7 @@
                     </div>
 
                     <div class="card-footer">
-                        <p class="custom-link1"> <%= tweets[i].liked_by.length %> </p>
+                        <p class="custom-link1"> <i class="fas fa-thumbs-up"></i> <%= tweets[i].liked_by.length %> </p>
                     </div>
                 </li>
             </div><!-- END/posted-->
