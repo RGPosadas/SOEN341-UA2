@@ -25,7 +25,7 @@ This project's goal is to create a web application similar to Twitter.
 * Yun Shi Lin, 40055867 @dabris
 
 ## Setting Up Your Environment
-* Head to /src
+* Head to src/
 * Install your dependencies using `npm install`
 * You must have `nodemon` installed. If you don't, run `npm install -g nodemon` to download it
 * Run `nodemon server.js` 
