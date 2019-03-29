@@ -52,6 +52,7 @@ const wrongEmail ={
       interests: "Corn Flakes",
       }); 
 
+      //LOGIN TEST
 describe('Login Test', function () {
   describe('Login test begins', function () {
       it('The app should redirect to /profile when logged in successfully', function (done) {
@@ -104,7 +105,7 @@ describe('Login Test', function () {
 })
 
 
-
+//TWEET TEST
 describe('Tweet Test:sending a tweet...', function () {
     var tweetToPost = "[Travis-CI Testing] Commit " + String(process.env.TRAVIS_COMMIT) + "/" + String(process.env.TRAVIS_COMMIT_MESSAGE);
 
@@ -141,7 +142,10 @@ describe('Tweet Test:sending a tweet...', function () {
 
 })
 })
-/*describe('Tweet Test:liking a tweet...', function () {
+
+
+//LIKE TEST
+describe('Tweet Test:liking a tweet...', function () {
   var tweetToPost = "[Travis-CI Testing] Commit " + String(process.env.TRAVIS_COMMIT) + "/" + String(process.env.TRAVIS_COMMIT_MESSAGE);
   
   before(function (done) {
@@ -172,69 +176,15 @@ describe('like sended to db:'+tweetToPost, function () {
     })
 
 })
-})*/
-
-
-
-  describe('Extra feature test', function () {
-      it('The profile has like tab which redirect to /profile/likes', function (done) {
-       request(app)
-        .get('/profile/likes')
-         .then(function(response){
-          expect('Location','/profile/likes');
-        
-          
-          done();
-          
-      })
-      
-  
-});
-    it('The profile has my post tab which redirect to /profile/post', function (done) {
-       request(app)
-        .get('/profile/post')
-         .then(function(response){
-          expect('Location','/profile/post');
-        
-          
-          done();
-          
-      })
-      
-  
-});
-    it('The profile has followers tab which redirect to /profile/followers', function (done) {
-       request(app)
-        .get('/profile/followers')
-         .then(function(response){
-          expect('Location','/profile/followers');
-        
-          
-          done();
-          
-      })
-      
-  
-});
-    it('The profile has following tab which redirect to /profile/following', function (done) {
-       request(app)
-        .get('/profile/friends')
-         .then(function(response){
-          expect('Location','/profile/friends');
-        
-          
-          done();
-          process.exit();
-      })
-      
-  
-});
-  });
+})
 
 
 
 
 
+
+
+//FOLLOWING TEST
 describe('Tweet Test: following another user...', function(){
 
   before(function(done){ 
@@ -260,7 +210,7 @@ describe('following was sent to db: ' , function(){
   })
 })
 })
-
+//UNFOLLOWING TEST
 describe('Tweet Test: unfollowing another user ...', function(){
 
   before(function(done){
@@ -280,11 +230,68 @@ describe('Tweet Test: unfollowing another user ...', function(){
       if (err) throw err;
       if (data.following.indexOf(user2.id==null)){
         console.log("Unfollowing successfully!");
-      process.exit();
+     
       }
     });
    })
   })
 })
+
+
+//EXTRA FEATURE TESTS
+describe('Extra feature test', function () {
+  it('The profile has like tab which redirect to /profile/likes', function (done) {
+   request(app)
+    .get('/profile/likes')
+     .then(function(response){
+      expect('Location','/profile/likes');
+    
+      
+      done();
+      
+  })
+  
+
+});
+it('The profile has my post tab which redirect to /profile/post', function (done) {
+   request(app)
+    .get('/profile/post')
+     .then(function(response){
+      expect('Location','/profile/post');
+    
+      
+      done();
+      
+  })
+  
+
+});
+it('The profile has followers tab which redirect to /profile/followers', function (done) {
+   request(app)
+    .get('/profile/followers')
+     .then(function(response){
+      expect('Location','/profile/followers');
+    
+      
+      done();
+      
+  })
+  
+
+});
+it('The profile has following tab which redirect to /profile/following', function (done) {
+   request(app)
+    .get('/profile/friends')
+     .then(function(response){
+      expect('Location','/profile/friends');
+    
+      
+      done();
+      process.exit();
+  })
+  
+
+});
+});
 
 
