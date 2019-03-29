@@ -2,28 +2,69 @@
 <%- include profile-layout.ejs %>
 <script src="/js/tweet_ajax.js"></script>
 
-    <div class = "card-body" id="tweet-table-1">
-        <h1 class = "lead mb-3"> Tweets </h1>
+    <!--Post-->
+        <div class="card mb-5">
+        <div class="card-header border-0">
+            <ul class="nav nav-tabs card-header-tabs border-0" id="myTab" role="tablist">
+                <li class="nav-item ">
+                    <a class="nav-link active border-0" id="posts-tab" data-toggle="tab" href="#posts" role="tab" aria-controls="posts" aria-selected="true">Make a Tweet</a>
+                </li>
+            </ul>
+        </div>
+
         <form>
-            <input class = "form-group" type="text" name="item" placeholder="Write comment" required />
-            <button type="submit" id="#test">Tweet</button>
-        </form>
+            <div class="card-body">
 
-        <div>   
-             <ul class="list-group">
-                <% for(var i = tweets.length-1; i >= 0; i--) { %>
-                    <div>
-                     <!-- <%= tweetId= tweets[i]._id%> -->
-                        <li class="list-group-item">
-                        <h5 style="color:darkblue"><p><%= first_name + " " + last_name %></h5>
-                        <%= tweets[i].tweet %></p>
-                        <p>Like counter: <%= tweets[i].liked_by.length %> </p>
-                        <p><small style="color:darkblue"><%= tweets[i]._id.getTimestamp(); %></small></p>
-                        </li>
+                <div class="tab-pane fade show active" id="posts" role="tabpanel" aria-labelledby="posts-tab">
+                    <div class="form-group">
+                        <input class="form-control border-left-0 border-right-0 border-top-0 border-muted rounded-0" name="item" id="message" rows="3" placeholder="What are you thinking?" required>
                     </div>
-                <br />
-                <% } %>
-                </ul>
-            </div>
+                </div>
 
-        </div>  
+                <div class="row">
+                    <div class="col-sm-2">
+                        <button type="submit" id="#test"class="btn bg-custom btn-block">Tweet</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div><!-- END/post-->
+
+    <div> 
+        <ul class="list-group">
+        <% for(var i = tweets.length-1; i >= 0; i--) { %>
+            <!--Posted-->
+            <div class="card gedf-card mb-5 border-0">
+                <li class="list-group-item">
+                    <div class="card-header">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="mr-2">
+                                    <img class="rounded-circle" width="45" src="/img/kiwi.jpg" alt="">
+                                </div>
+                                <div class="ml-2">
+                                    <div class="h5 m-0"><%= first_name + " " + last_name %></div>
+                                    <div class="h7 text-muted"><%= location %></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i> <%= tweets[i]._id.getTimestamp(); %></div>
+
+                        <p class="card-text"><%= tweets[i].tweet %></p>
+
+                    </div>
+
+                    <div class="card-footer">
+                        <p class="custom-link1"> <i class="fas fa-thumbs-up"></i> <%= tweets[i].liked_by.length %> </p>
+                    </div>
+                </li>
+            </div><!-- END/posted-->
+        <% } %>    
+        </ul>
+    </div>
+
+</div>  
+

@@ -1,18 +1,22 @@
 <div class="row mt-5">
-    <div class="col-md-6 m-auto">
-        <div class="card card-body">
-            <h1 class="text-center mb-3">
+    <div class="col-md-8 m-auto"><!-- Grid starts -->
+        <!-- BOOTSTRAP CARD -->
+        <div class="card card-body border-light shadow bg-white">
+            <h1 class="card-title">
                 <i class="fas fa-address-card"></i> Create an Account
             </h1>
             <%include ./partials/messages %>
+
             <form action="/users/register" method="POST">
+
+                <!-- First name & Last name -->
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input
                             type="text"
                             id="first_name"
                             name="first_name"
-                            class="form-control"
+                            class="form-control border-left-0 border-right-0 border-top-0 border-muted  rounded-0 mb-3"
                             placeholder="Enter First Name"
                             value="<%= typeof first_name != 'undefined' ? first_name : '' %>"
                     />
@@ -20,29 +24,33 @@
                             type="text"
                             id="last_name"
                             name="last_name"
-                            class="form-control"
+                            class="form-control border-left-0 border-right-0 border-top-0 border-muted  rounded-0"
                             placeholder="Enter Last Name"
                             value="<%= typeof last_name != 'undefined' ? last_name : '' %>"
                     />
-                </div>
+                </div><!--END/firstname,lastname-->
+
+                <!-- email -->
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input
                             type="email"
                             id="email"
                             name="email"
-                            class="form-control"
+                            class="form-control border-left-0 border-right-0 border-top-0 border-muted  rounded-0"
                             placeholder="Enter Email"
                             value="<%= typeof email != 'undefined' ? email : '' %>"
                     />
-                </div>
+                </div><!-- END/email -->
+
+                <!-- password -->
                 <div class="form-group">
                     <label for="password">Password</label>
                     <input
                             type="password"
                             id="password"
                             name="password"
-                            class="form-control"
+                            class="form-control border-left-0 border-right-0 border-top-0 border-muted  rounded-0"
                             placeholder="Create Password"
                             value="<%= typeof password != 'undefined' ? password : '' %>"
                     />
@@ -53,18 +61,20 @@
                             type="password"
                             id="password2"
                             name="password2"
-                            class="form-control"
+                            class="form-control border-left-0 border-right-0 border-top-0 border-muted  rounded-0"
                             placeholder="Confirm Password"
                             value="<%= typeof password2 != 'undefined' ? password2 : '' %>"
                     />
-                </div>
+                </div><!-- END/password -->
+
+                <!-- profile-->
                 <div class="form-group">
                     <label for="Profile">Profile</label>
                     <input
                             type="text"
                             id="location"
                             name="location"
-                            class="form-control"
+                            class="form-control border-left-0 border-right-0 border-top-0 border-muted  rounded-0 mb-3"
                             placeholder="Location"
                             value="<%= typeof location != 'undefined' ? location : '' %>"
                     />
@@ -72,7 +82,7 @@
                             type="text"
                             id="description"
                             name="description"
-                            class="form-control"
+                            class="form-control border-left-0 border-right-0 border-top-0 border-muted  rounded-0 mb-3"
                             placeholder="Description"
                             value="<%= typeof description != 'undefined' ? description : '' %>"
                     />
@@ -80,16 +90,16 @@
                             type="text"
                             id="interests"
                             name="interests"
-                            class="form-control"
+                            class="form-control border-left-0 border-right-0 border-top-0 border-muted  rounded-0"
                             placeholder="Interests"
                             value="<%= typeof interests != 'undefined' ? interests : '' %>"
                     />
-                </div>
-                <button type="submit" class="btn btn-primary btn-block">
-                    Register
-                </button>
+                </div><!-- END/profile-->
+
+                <button type="submit" class="btn bg-custom btn-block">Register</button>
+
             </form>
-            <p class="lead mt-4">Have An Account? <a href="/users/login">Login</a></p>
+            <p class="lead mt-4 ">Have An Account? <a href="/users/login" class="custom-link1">Login</a></p>
         </div>
     </div>
 </div>

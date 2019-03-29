@@ -1,34 +1,45 @@
 <div class="row mt-5">
-    <div class="col-md-6 m-auto">
-        <div class="card card-body">
-            <h1 class="text-center mb-3"><i class="fas fa-user"></i>  Login</h1>
+    <div class="col-md-8 m-auto"><!-- Grid starts -->
+        <!-- BOOTSTRAP CARD -->
+        <div class="card card-body border-light shadow bg-white">
+
+            <h1 class="card-title"><i class="fas fa-user"></i>  Login</h1>
+
             <%include ./partials/messages %>
+
+            <!-- FORM -->
             <form action="/users/login" method="POST">
+
+                <!-- EMAIL -->
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input
                             type="email"
                             id="email"
                             name="email"
-                            class="form-control"
+                            class="form-control border-left-0 border-right-0 border-top-0 border-muted  rounded-0"
                             placeholder="Enter Email"
                     />
-                </div>
+                </div><!-- END/email -->
+
+                <!-- PASSWORD -->
                 <div class="form-group">
                     <label for="password">Password</label>
                     <input
                             type="password"
                             id="password"
                             name="password"
-                            class="form-control"
+                            class="form-control border-left-0 border-right-0 border-top-0 border-muted rounded-0"
                             placeholder="Enter Password"
                     />
-                </div>
-                <button type="submit" class="btn btn-primary btn-block">Login</button>
-            </form>
-            <p class="lead mt-4">
-                No Account? <a href="/users/register">Register</a>
-            </p>
-        </div>
-    </div>
+                </div><!-- END/password -->
+
+                <button type="submit" class="btn bg-custom btn-block">Login</button>
+
+            </form><!-- END/form -->
+
+            <p class="lead mt-4">No Account? <a href="/users/register" class="custom-link1">Create One!</a></p>
+
+        </div><!-- END/card-->
+    </div><!-- END/grid-->
 </div>
