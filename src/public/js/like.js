@@ -1,18 +1,15 @@
 
 let id = 0;
 let value = "";
-// Get the id from the follow button when its clicked
+// Get the id from the like button when its clicked
 $('button').click(function(){
     id = $(this).attr('id');
     value = $(this).attr('value');
 });
 
-//Pass the id here to send to the database
+//Pass the id here to send to the database for the like and unlike 
 $(document).ready(function(){
-
-
     $('form').on('submit', function(){
-
         if(value == 'like'){
             $.ajax({
                 type: 'POST',
@@ -28,10 +25,7 @@ $(document).ready(function(){
                   }
                 }
               });
-        
-              //$('#li-'+id).remove()
-            }
-
+             }
         else{
             $.ajax({
                 type: 'POST',
@@ -46,9 +40,6 @@ $(document).ready(function(){
                     location.reload();
                   }                }
               });
-        
-              //$('#li-'+id).remove()
-
               location.reload()
               return false;
         }
