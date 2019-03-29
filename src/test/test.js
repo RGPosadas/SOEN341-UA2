@@ -10,9 +10,6 @@ const expect = require('chai').expect
 const shortid = require("shortid");
 var ObjectId = mongoose.Types.ObjectId
 
-
-
-
 const userCredentials = {
     email: 'travis@travis.com',
     password: 'travis'
@@ -175,12 +172,6 @@ describe('Liking this tweet: '+tweetToPost, function () {
 })
 })
 
-
-
-
-
-
-
 //FOLLOWING TEST
 describe('FOLLOWING TEST:', function(){
 
@@ -192,7 +183,7 @@ describe('FOLLOWING TEST:', function(){
 
 describe('Following was sent to db: ' , function(){
 
-  it('Travis is now following the user ', function(done){
+  it('Tweet Poster is now following Life Cereal', function(done){
     done();
   })
   after(function(){
@@ -217,15 +208,13 @@ describe('UNFOLLOWING TEST:', function(){
     
   });
   describe('Unfollow was sent to the db: ', function(){
-    it('Travis has unfollowed the user ', function(done){
+    it('Tweet Poster has unfollowed Life Cereal ', function(done){
       done();
     })
    after(function(){
     User.findOne({"_id": ObjectId(user1.id)}, function (err, data){
       if (err) throw err;
       if (data.following.indexOf(user2.id==null)){
-        
-     
       }
     });
    })
@@ -267,7 +256,6 @@ it('The profile has followers tab which redirect to /profile/followers', functio
      .then(function(response){
       expect('Location','/profile/followers');
     
-      
       done();
       
   })
@@ -279,7 +267,6 @@ it('The profile has following tab which redirect to /profile/following', functio
     .get('/profile/friends')
      .then(function(response){
       expect('Location','/profile/friends');
-    
       
       done();
       
