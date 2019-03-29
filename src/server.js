@@ -15,15 +15,9 @@ const bodyParser = require('body-parser');
 
 require('./config/passport')(passport);
 
-// When you call mongoose.connect, it will set up a connection with the database.
-
-// //Connect to the database
-// mongoose.connect(uri, { useNewUrlParser: true })
-//     .then(() => console.log("MongoDB Connected"))
-//     .catch(err => console.log(err));
-
 let db;
 
+// When you call mongoose.connect, it will set up a connection with the database
 mongoose.connect(uri, { useNewUrlParser: true }, (err, database) => {
   if (err) {
     return console.log(err);
@@ -77,8 +71,6 @@ app.use(expressValidator({
   }
 }));
 
-
-
 // Express Session Middleware
 app.use(
     session({
@@ -87,7 +79,6 @@ app.use(
       saveUninitialized: true
     })
 );
-
 
 // Passport middleware
 app.use(passport.initialize());
@@ -109,7 +100,6 @@ app.get('*', function(req, res, next){
   res.locals.user = req.user || null;
   next();
 });
-
 
 //Route Files
 app.use('/', require('./routes/index'));
@@ -142,4 +132,3 @@ app.get('/clicks', (req, res) => {
     res.send(result);
   });
 });
-
