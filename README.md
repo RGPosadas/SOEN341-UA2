@@ -10,6 +10,7 @@ This project's goal is to create a web application similar to Twitter.
 * TravisCI
 * AJAX
 * JavaScript
+* Mocha
 
 ## Team Members
 * Ritchelle Grace Posadas, 40057013 @RGPosadas
